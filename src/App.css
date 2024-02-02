@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+
+/* App.css */
+/* Navbar styles */
+.navbar {
+  background-color: #fff; /* Navbar background color */
+}
+
+.navbar-brand img {
+  max-height: 40px; /* Limit the height of the logo */
+}
+
+.navbar-nav .nav-link {
+  color: #333; /* Navbar links color */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Navbar links hover color */
+}
+
+/* Main content styles */
+.container {
+  max-width: 800px; /* Limit the width of the content */
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+h1 {
+  font-size: 2.5rem; /* Header font size */
+  margin-bottom: 20px; /* Bottom margin for header */
+}
+
+/* App.css */
+/* Add custom styles for the search bar */
+.navbar .form-inline .input-group {
+  width: auto; /* Adjust the width as needed */
+}
+
+.navbar .form-inline .form-control {
+  width: 300px; /* Adjust the width as needed */
+}
+
+.navbar .form-inline .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Add space between the search input field and the search button */
+.navbar .form-inline .input-group-append {
+  margin-left: -5px; /* Adjust the margin as needed */
+}
+
+/* App.css */
+.navbar-custom {
+  background-color: #6f42c1; /* This is a shade of purple, you can adjust the color as needed */
+}
