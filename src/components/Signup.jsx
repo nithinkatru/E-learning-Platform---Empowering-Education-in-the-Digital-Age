@@ -17,40 +17,22 @@ const Signup = () => {
   });
   const [error, setError] = useState('');
 
-  const handleChange = (e) => {
+   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Reset error message
-
-    // Validate form fields
-    const { firstName, lastName, email, phoneNumber, role, password, confirmPassword } = formData;
-    if (!firstName.trim() || !lastName.trim() || !email.trim() || !phoneNumber.trim() || !role || !password.trim() || !confirmPassword.trim()) {
-      setError('Please fill in all fields.');
-      return;
-    }
-    if (password !== confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
-    if (password.length < 8) {
-      setError('Password must be at least 8 characters long.');
-      return;
-    }
-
-    // Hash the password using MD5
-    const hashedPassword = md5(password);
-
+    // Additional client-side validation can be added here
     try {
-      // Make a POST request to your backend API
-      const response = await axios.post('http://your-backend-api-url/signup', {
-        ...formData,
-        password: hashedPassword // Use hashed password for security
-      });
-
-      // Reset form fields after successful signup
+      const response = await axios.post('http://localhost:5000/api/users', formData);
+      // Assume the backend handles password hashing
+      console.log(response.data); // For debugging
+      alert('Signup successful!');
       setFormData({
         firstName: '',
         lastName: '',
@@ -60,13 +42,11 @@ const Signup = () => {
         password: '',
         confirmPassword: ''
       });
-      alert('Signup successful!');
     } catch (error) {
-      console.error('Error signing up:', error);
       setError('Signup failed. Please try again later.');
+      console.error('Error signing up:', error);
     }
   };
-
   return (
     <div className="container">
       <div className="row justify-content-center">

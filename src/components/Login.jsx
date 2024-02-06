@@ -1,72 +1,69 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import '../Css/login.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '' 
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+  const handleChange = (e) => {
+    setCredentials({...credentials, [e.target.name]: e.target.value});
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Reset error message
+    setErrorMessage(''); // Clear any existing error message
+    console.log("after handle submit");
+    try {
+      console.log("in try");
+      // Directly calling axios without assigning the response to a variable
+      await axios.post('http://localhost:5000/api/login', credentials);
 
-    // Validate username and password
-    if (!username.trim() || !password.trim()) {
-      setError('Please enter username and password.');
-      return;
+      alert('Login successful!'); // Display success message
+      // Actions like redirecting the user or updating global state can be placed here
+      console.log("entering catch");
+    } catch (error) {
+      console.log("in catch before if");
+      if (error.response) {
+        console.log("in catch after if");
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setErrorMessage(error.response.data);
+        console.log(error.response.data);
+      } else if (error.request) {
+        console.log("in catch");
+        // The request was made but no response was received
+        setErrorMessage('No response from server');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setErrorMessage('Error: ' + error.message);
+      }
     }
-
-    // Add your login logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
-    // You can add your authentication logic here
   };
 
   return (
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h1 className="card-title text-center">Login</h1>
-              <form onSubmit={handleSubmit} noValidate> {/* Add noValidate attribute */}
-                <div className="form-group row align-items-center">
-                  <label htmlFor="username" className="col-sm-3 col-form-label">Username</label>
-                  <div className="col-sm-9">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="form-group row align-items-center">
-                  <label htmlFor="password" className="col-sm-3 col-form-label">Password</label>
-                  <div className="col-sm-9">
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-                {error && <p className="text-danger">{error}</p>}
-                <button type="submit" className="btn btn-primary btn-block">Login</button>
-              </form>
-              {/* Add a link to signup */}
-              <p className="text-center mt-3">
-                Don't have an account? <Link to="/signup">Sign up</Link>
-              </p>
+          <form onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <div className="form-group">
+              <label>Email:</label>
+              <input type="email" name="email" value={credentials.email} onChange={handleChange} className="form-control" required />
             </div>
-          </div>
+            <div className="form-group">
+              <label>Password:</label>
+              <input type="password" name="password" value={credentials.password} onChange={handleChange} className="form-control" required />
+            </div>
+            {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+            <button type="submit" className="btn btn-primary">Login</button>
+          </form>
+          <p className="mt-2">
+            Don't have an account? <Link to="/signup">Sign up</Link>
+          </p>
         </div>
       </div>
     </div>
