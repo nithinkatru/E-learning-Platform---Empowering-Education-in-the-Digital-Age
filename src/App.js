@@ -53,7 +53,7 @@ function App() {
             {/* Login and Sign Up Buttons */}
             <div className="my-2 my-lg-0 ml-3">
               <Link className="btn btn-outline-light mr-sm-2" to="/login">Login</Link>
-              <Link className="btn btn-light" to="/signup">Sign Up</Link>
+              <Link className="btn btn-light" to="/Signup">Sign Up</Link>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ function App() {
           >
             <Routes>
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
+              <Route path="/Signup" element={<Signup />} />
             </Routes>
           </motion.div>
         </div>
