@@ -90,3 +90,45 @@ h1 {
 .navbar-custom {
   background-color: #6f42c1; /* This is a shade of purple, you can adjust the color as needed */
 }
+
+/* App.css */
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-video video {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.container {
+  position: relative;
+  z-index: 1; /* Ensure content appears above the video */
+}
+.display-4 text-white{
+  
+}
+/* Footer Section */
+.footer {
+  background-color: #222;
+  color: #aaa;
+}
+
+.footer a {
+  color: #aaa;
+}
+
+.footer a:hover {
+  color: #fff;
+}

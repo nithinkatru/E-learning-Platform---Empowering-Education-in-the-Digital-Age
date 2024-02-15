@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../Css/login.css'
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -62,7 +63,7 @@ const Login = () => {
             <button type="submit" className="btn btn-primary">Login</button>
           </form>
           <p className="mt-2">
-            Don't have an account? <Link to="/signup">Sign up</Link>
+            Don't have an account? <Link to="/admin">Sign up</Link>
           </p>
         </div>
       </div>
