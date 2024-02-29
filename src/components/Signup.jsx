@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import md5 from 'md5'; // Import MD5 library
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../Css/signup.css'; // Import Bootstrap CSS
 import axios from 'axios'; // Import Axios
-import '../Css/signup.css';
+
 
 const Signup = () => {
   const [formData, setFormData] = useState({
