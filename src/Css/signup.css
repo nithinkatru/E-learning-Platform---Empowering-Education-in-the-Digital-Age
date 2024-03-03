@@ -1,75 +1,102 @@
-/* signup.css */
+/* Signup.css */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/* Ensures the background image covers the entire page */
+body {
+  /* background-image: url("../../public/images/bg.webp"); */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+}
+
+/* Styling for the signup container to ensure readability over the background */
 .signup-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    animation: slideIn 0.5s ease; /* Page load animation */
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  /* Other styles */
+
+ 
+  max-width: 800px!important;
+  margin: 5% auto !important;
+  padding: 20px !important;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a subtle shadow for better contrast */
+  animation: slideIn 0.5s ease; /* Reuse the slideIn animation */
+}
+
+/* Adjusts the form's appearance */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='password'],
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Reuse the slideIn animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
   }
-  
-  .signup-form {
-    display: flex;
-    flex-direction: column;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  input[type='text'],
-  input[type='email'],
-  input[type='tel'],
-  input[type='password'],
-  select {
+}
+
+/* Adjust the background position and form padding for smaller screens */
+@media screen and (max-width: 768px) {
+  .signup-container {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    margin-top: 20%;
   }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .login-link {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .login-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .login-link a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Page load animation keyframes */
-  @keyframes slideIn {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
+}

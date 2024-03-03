@@ -1,13 +1,43 @@
-/* Login.css */
 .login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    animation: slideIn 1s ease; /* Page load animation with slide-in effect */
-  }
+  background-image: url("../../public/images/back.webp");
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative; /* Adjusted to relative for content positioning */
+  max-width: 400px;
+  margin: 100px auto; /* Adjust margin for vertical alignment */
+  padding: 20px;
+  border-radius: 5px;
+  color: #fff; /* Ensure text color is white for visibility */
+  animation: slideIn 1s ease;
+  
+  width: 100%; /* Full width */
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the form vertically and horizontally */
+  z-index: 1;
+
+
+}
+
+/* Reuse button styles from Hero.css or define them here to match */
+.button button, .button a {
+  /* Button styles to match Hero */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff; /* Example primary button color */
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none; /* Remove for <a> elements */
+  transition: background-color 0.5s ease;
+}
+
+.button button:hover, .button a:hover {
+  background-color: #0056b3;
+}
+
   
   /* New keyframe animation for slide-in effect */
   @keyframes slideIn {
