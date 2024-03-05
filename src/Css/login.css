@@ -1,3 +1,4 @@
+
 .login-container {
   background-image: url("../../public/images/back.webp");
   background-size: cover;
@@ -7,7 +8,7 @@
   margin: 100px auto; /* Adjust margin for vertical alignment */
   padding: 20px;
   border-radius: 5px;
-  color: #fff; /* Ensure text color is white for visibility */
+  color: #000000; /* Ensure text color is white for visibility */
   animation: slideIn 1s ease;
   
   width: 100%; /* Full width */

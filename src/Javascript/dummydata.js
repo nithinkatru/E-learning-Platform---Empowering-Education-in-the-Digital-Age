@@ -59,7 +59,7 @@ export const coursesCard = [
   {
     id: 2,
     cover: "../images/courses/c2.png",
-    coursesName: "Enhancing Adobe Photoshop CC 2020 Skills",
+    coursesName: "Enhancing Adobe Photoshop CC ",
     courTeacher: [
       {
         dcover: "./images/back.webp",
@@ -73,7 +73,7 @@ export const coursesCard = [
   {
     id: 3,
     cover: "../images/courses/c3.png",
-    coursesName: "HTML, CSS, and Javascript for Web Developers",
+    coursesName: "HTML, CSS, and JavascriptWeb Developers",
     courTeacher: [
       {
         dcover: "./images/back.webp",
@@ -87,11 +87,11 @@ export const coursesCard = [
   {
     id: 4,
     cover: "../images/courses/c4.png",
-    coursesName: "Introducing to Programming with WordPress",
+    coursesName: "Introducing  Programming  WordPress",
     courTeacher: [
       {
         dcover: "./images/back.webp",
-        name: "by Prabin Thapa Mager",
+        name: "by Prabin Thapa ",
         totalTime: "20 lectures (20 hrs)",
       },
     ],
@@ -129,7 +129,7 @@ export const coursesCard = [
   {
     id: 7,
     cover: "../images/courses/c7.png",
-    coursesName: "Introducing to with HTML / CSS",
+    coursesName: "Introducing to with  CSS",
     courTeacher: [
       {
         dcover: "./images/back.webp",
@@ -157,7 +157,7 @@ export const coursesCard = [
   {
     id: 9,
     cover: "../images/courses/c9.png",
-    coursesName: "Introducing to with HTML / CSS / JAVASCRIPT",
+    coursesName: "Introducing to  JAVASCRIPT",
     courTeacher: [
       {
         dcover: "./images/back.webp",
