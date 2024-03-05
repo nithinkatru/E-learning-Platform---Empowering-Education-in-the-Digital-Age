@@ -1,71 +1,40 @@
 import React, { useState } from 'react';
-import '../Css/Admin.css';
-
-
+import "./Educator.css";
+import Heading from '../common/heading/Heading';
+import AddVideoForm from './AddVideoForm'; 
+import CoursesPage from './CoursesPage'; 
 
 function AdminDashboard() {
-  const [videoInfo, setVideoInfo] = useState({
-    title: '',
-    url: '',
-    description: '', // Adding a description property
-  });
+  const [videoInfo, setVideoInfo] = useState({ title: '', url: '', description: '', videoFile: null });
+  const [showForm, setShowForm] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setVideoInfo((prevInfo) => ({
-      ...prevInfo,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the submission to your backend
-    console.log('Submitting video info:', videoInfo);
-    // Reset form after submission
-    setVideoInfo({ title: '', url: '', description: '' });
+    // Your existing submit logic
+    console.log('Form submitted', videoInfo);
+    // Reset form state or handle success
+    setVideoInfo({ title: '', url: '', description: '', videoFile: null });
+   
   };
 
   return (
-    <div className="admin-dashboard">
-      <h2>Admin Dashboard - Add Video</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Video Title:</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={videoInfo.title}
-            onChange={handleChange}
-            required
-          />
+    <>
+      <section className='hero'>
+        <div className='container'>
+          <div className='row'>
+            <Heading subtitle='WELCOME TO NEXTSKILL' title='Best Online Education Expertise' />
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </div>
         </div>
-        <div>
-          <label htmlFor="url">Video URL:</label>
-          <input
-            type="url"
-            id="url"
-            name="url"
-            value={videoInfo.url}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            name="description"
-            value={videoInfo.description}
-            onChange={handleChange}
-            required
-            rows="4"
-          ></textarea>
-        </div>
-        <button type="submit">Add Video</button>
-      </form>
-    </div>
+      </section>
+      <div className="admin-dashboard">
+        <h2>Admin Dashboard</h2>
+        <button className="dashboard-btn" onClick={() => setShowForm('course')}>Add Course</button>
+        <button className="dashboard-btn" onClick={() => setShowForm('video')}>Add Video</button>
+        {showForm === 'video' && <AddVideoForm videoInfo={videoInfo} setVideoInfo={setVideoInfo} onSubmit={handleSubmit} />}
+        {showForm === 'course' && <CoursesPage />}
+      </div>
+    </>
   );
 }
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 import '../components/home/Hero/Hero.css'
 import '../Css/login.css'
 
@@ -61,6 +62,7 @@ const Login = () => {
               <label>Password:</label>
               <input type="password" name="password" value={credentials.password} onChange={handleChange} className="form-control" required />
             </div>
+            
             {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
             <button type="submit" className="btn btn-primary">Login</button>
           </form>
