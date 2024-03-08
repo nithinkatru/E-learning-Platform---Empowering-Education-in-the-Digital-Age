@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Educator.css";
 
 function AddVideoForm() {
@@ -6,38 +6,58 @@ function AddVideoForm() {
       title: '',
       url: '',
       description: '',
-      videoFile: null, // Initial state for the file
+      videoFile: null,
+      courseId: '' // Add courseId state
     });
-  
+    const [courses, setCourses] = useState([]); // State to store courses
+    
+    useEffect(() => {
+      // Fetch courses from the server when the component mounts
+      fetchCourses();
+    }, []);
+    
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/courses');
+        if (response.ok) {
+          const data = await response.json();
+          setCourses(data);
+        } else {
+          console.error('Failed to fetch courses');
+        }
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+    };
+
     const handleChange = (e) => {
       const { name, value, files } = e.target;
       if (files) {
-        setVideoInfo({ ...videoInfo, videoFile: files[0] }); // Handle file input
+        setVideoInfo({ ...videoInfo, videoFile: files[0] });
       } else {
-        setVideoInfo({ ...videoInfo, [name]: value }); // Handle other inputs
+        setVideoInfo({ ...videoInfo, [name]: value });
       }
     };
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const formData = new FormData(); // Use FormData to handle file uploads
+      const formData = new FormData();
       formData.append('title', videoInfo.title);
       formData.append('url', videoInfo.url);
       formData.append('description', videoInfo.description);
+      formData.append('courseId', videoInfo.courseId); // Add courseId to form data
       if (videoInfo.videoFile) {
-        formData.append('videoFile', videoInfo.videoFile); // Append the file
+        formData.append('videoFile', videoInfo.videoFile);
       }
       
       try {
         const response = await fetch('http://localhost:5000/api/videos', {
           method: 'POST',
-          body: formData, // Send as FormData
-          // Note: Don't set 'Content-Type' header when sending FormData,
-          // the browser will set it along with the correct boundary.
+          body: formData,
         });
         if (response.ok) {
           console.log('Video uploaded successfully');
-          setVideoInfo({ title: '', url: '', description: '', videoFile: null }); // Reset form
+          setVideoInfo({ title: '', url: '', description: '', videoFile: null, courseId: '' });
           alert('Video uploaded successfully');
         } else {
           console.error('Upload failed');
@@ -48,6 +68,7 @@ function AddVideoForm() {
         alert('Error submitting form');
       }
     };
+  
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -92,6 +113,15 @@ function AddVideoForm() {
           accept="video/*"
           onChange={handleChange}
         />
+      </div>
+      <div>
+        <label htmlFor="course">Select Course:</label>
+        <select id="course" name="courseId" value={videoInfo.courseId} onChange={handleChange}>
+          <option value="">Select a course</option>
+          {courses.map(course => (
+            <option key={course._id} value={course._id}>{course.title}</option>
+          ))}
+        </select>
       </div>
       <button type="submit">Add Video</button>
     </form>
