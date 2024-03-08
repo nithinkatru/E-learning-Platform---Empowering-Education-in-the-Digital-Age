@@ -6,7 +6,6 @@ import ExploreCourses from "./ExploreCourses"
 const StudentWelcome = () => {
   return (
     <>
-      <section className='student-hero'>
         <div className='container'>
           <div className='row'>
             <Heading subtitle="STUDENT PORTAL" title="Unlock Your Learning Potential" />
@@ -15,13 +14,13 @@ const StudentWelcome = () => {
             <button className='primary-btn' onClick={'/ExploreCourses'}>
                 Explore Courses <i className='fa fa-long-arrow-alt-right'></i>
               </button>
+              &nbsp;&nbsp;&nbsp;
               <button>
                 My Dashboard <i className='fa fa-long-arrow-alt-right'></i>
               </button>
             </div>
           </div>
         </div>
-      </section>
       <div className='margin'></div>
     </>
   );

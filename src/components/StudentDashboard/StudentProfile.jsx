@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './StudentProfile.css';
 
 const StudentProfile = () => {
-  const [userData, setUserData] = useState({});
+  const [User, setUserData] = useState({});
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -19,15 +20,17 @@ const StudentProfile = () => {
   }, []);
 
   return (
-    <div className="container">
+    <section className="bg">
+    <div className="std-container">
       <h2>User Profile</h2>
-      <p><strong>First Name:</strong> {userData.firstName}</p>
-      <p><strong>Last Name:</strong> {userData.lastName}</p>
-      <p><strong>Email:</strong> {userData.email}</p>
-      <p><strong>Phone Number:</strong> {userData.phoneNumber}</p>
-      <p><strong>Role:</strong> {userData.role}</p>
+      <p><strong>First Name:</strong> {User.firstName}</p>
+      <p><strong>Last Name:</strong> {User.lastName}</p>
+      <p><strong>Email:</strong> {User.email}</p>
+      <p><strong>Phone Number:</strong> {User.phoneNumber}</p>
+      <p><strong>Role:</strong> {User.role}</p>
       {/* Display other user details as needed */}
     </div>
+    </section>
   );
 };
 

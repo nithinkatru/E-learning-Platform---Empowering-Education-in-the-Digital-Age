@@ -18,6 +18,7 @@ const Hero = () => {
               <button className='primary-btn'>
                 SIGN IN <i className='fa fa-long-arrow-alt-right'></i>
               </button>
+              &nbsp;&nbsp;&nbsp;
               <button>
                 LOGIN <i className='fa fa-long-arrow-alt-right'></i>
               </button>
