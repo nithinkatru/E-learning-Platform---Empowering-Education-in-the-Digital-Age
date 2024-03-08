@@ -27,15 +27,15 @@ const Header = () => {
             <li>
               <Link to='/Login'>Login</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to='/journal'>Admin dashboard</Link>
-            </li>
+            </li> */}
             {/* <li>
               <Link to='/CoursesPage'>CourseForm</Link>
             </li> */}
-            <li>
+            {/* <li>
               <Link to='/StudentDashboard'>Student_Dashboard</Link>
-            </li>
+            </li> */}
 
             <li>
               <Link to='/contact'>Contact</Link>
