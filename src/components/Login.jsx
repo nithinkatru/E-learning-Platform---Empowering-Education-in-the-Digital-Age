@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import '../components/home/Hero/Hero.css'
 import '../Css/login.css'
+
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -13,6 +14,7 @@ const Login = () => {
     password: '' 
   });
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setCredentials({...credentials, [e.target.name]: e.target.value});
   };
@@ -20,33 +22,40 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage(''); // Clear any existing error message
-    console.log("after handle submit");
     try {
-      console.log("in try");
-      // Directly calling axios without assigning the response to a variable
-      await axios.post('http://localhost:5000/api/login', credentials);
-
-      alert('Login successful!'); // Display success message
-      // Actions like redirecting the user or updating global state can be placed here
-      console.log("entering catch");
+      const response = await axios.post('http://localhost:5000/api/login', credentials);
+  
+      // Check if login was successful based on your backend response structure
+      if (response.data && response.data.message === 'Login successful') {
+        alert('Login successful!'); // Display success message
+        
+        // Assuming the response includes the user object with role
+        const { role } = response.data.user;
+    
+        // Redirect based on the role
+        if (role === 'student') {
+          navigate('/StudentDashboard'); // Adjust the path as necessary
+        } else if (role === 'admin') {
+          navigate('/AdminDashboard'); // Adjust the path as necessary
+        } else {
+          navigate('/'); // Redirect to a default route or show an error
+        }
+      } else {
+        // Handle login failure (e.g., wrong credentials)
+        setErrorMessage('Invalid email or password');
+      }
     } catch (error) {
-      console.log("in catch before if");
-      if (error.response) {
-        console.log("in catch after if");
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        setErrorMessage(error.response.data);
-        console.log(error.response.data);
+      if (error.response && error.response.data) {
+        // Handle backend validation messages (e.g., user not found or wrong password)
+        setErrorMessage(error.response.data.message || 'An error occurred');
       } else if (error.request) {
-        console.log("in catch");
-        // The request was made but no response was received
         setErrorMessage('No response from server');
       } else {
-        // Something happened in setting up the request that triggered an Error
         setErrorMessage('Error: ' + error.message);
       }
     }
   };
+  
 
   return (
     <div className="container">

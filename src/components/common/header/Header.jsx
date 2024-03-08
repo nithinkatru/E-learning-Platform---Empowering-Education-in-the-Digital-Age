@@ -24,9 +24,7 @@ const Header = () => {
             <li>
               <Link to='/team'>Team</Link>
             </li>
-            <li>
-              <Link to='/Login'>Login</Link>
-            </li>
+            
             <li>
               <Link to='/journal'>Admin dashboard</Link>
             </li>
@@ -42,6 +40,9 @@ const Header = () => {
             </li>
             <li>
               <Link to='/signup'>Sign in</Link>
+            </li>
+            <li>
+              <Link to='/Login'>Login</Link>
             </li>
           </ul>
           <div className='start'>

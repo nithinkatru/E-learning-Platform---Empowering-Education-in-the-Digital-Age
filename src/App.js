@@ -15,6 +15,7 @@ import AdminDashboard from './components/Admin/Admindashboard.jsx';
 import Coursespage from './components/Admin/CoursesPage.jsx';
 import StudentDashboard from './components/StudentDashboard/StudentWelcome.jsx';
 import ExploreCourses from "./components/StudentDashboard/ExploreCourses.jsx";
+import StudentProfile from "./components/StudentDashboard/StudentProfile.jsx";
 
 
 
@@ -37,7 +38,7 @@ function App() {
         <Route exact path='/ExploreCourses' element={<ExploreCourses />} />       
         <Route exact path='/courses' element={<CourseHome />} />
         <Route exact path='/team' element={<Team />} />
-        
+        <Route exact path='/StudentProfile' element={<StudentProfile />} />
 
 
        
