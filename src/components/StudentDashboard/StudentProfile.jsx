@@ -32,10 +32,14 @@ const StudentProfile = () => {
       <section className='student-hero'>
     <div className="std-container">
       <h2>User Profile</h2>
-      <p><strong>First Name:</strong> {User.firstName}</p>
+      {/* <p><strong>First Name:</strong> {User.firstName}</p>
       <p><strong>Last Name:</strong> {User.lastName}</p>
       <p><strong>Email:</strong> {User.email}</p>
-      <p><strong>Phone Number:</strong> {User.phoneNumber}</p>
+      <p><strong>Phone Number:</strong> {User.phoneNumber}</p> */}
+      <p><strong>First Name:</strong> Akshay</p>
+      <p><strong>Last Name:</strong> Saharajan</p>
+      <p><strong>Email:</strong> akshay.std@gmail.com</p>
+      <p><strong>Phone Number:</strong> 7894561230</p>
     </div>
     </section>
       <div className='margin'></div>
