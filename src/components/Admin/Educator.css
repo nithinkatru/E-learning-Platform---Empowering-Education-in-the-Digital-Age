@@ -2,22 +2,18 @@
 .admin-dashboard {
     margin-top: 40px; /* Adds space between the Hero section and the form */
     font-family: 'Arial', sans-serif;
-    color: #fff;
+    color: #000000;
     padding: 20px;
-    
-    border-top:30em;
-    max-width: 120em;
+    margin-top: 20em;
+    border-top:30em;  
     margin: 30em ;
-    background-image: url("../../../public/images/bg.webp");
-    background-size: cover;
-    background-attachment: fixed;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
   }
   
   .admin-dashboard h2 {
     text-align: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     
   }
   
