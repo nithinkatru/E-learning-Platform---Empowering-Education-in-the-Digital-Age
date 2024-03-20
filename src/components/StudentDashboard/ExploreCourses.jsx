@@ -4,34 +4,41 @@ function ExploreCourses() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    // Ensure the URL matches your server configuration
     fetch('http://localhost:5000/api/videos')
       .then(response => {
-        // Check for a successful response
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
       .then(data => {
-        console.log('Fetched Videos:', data); // Debugging line to see fetched data
         setVideos(data);
       })
       .catch(error => {
         console.error('Error fetching videos:', error);
       });
-  }, []); // Empty dependency array ensures this effect runs only once after initial render
+  }, []);
 
   return (
     <div>
       <h2>Explore Courses</h2>
       {videos.length > 0 ? (
         videos.map(video => (
-          <div key={video._id}> {/* Ensure your documents have _id field */}
+          <div key={video._id} style={{ marginBottom: '20px' }}>
             <h3>{video.title}</h3>
             <p>{video.description}</p>
-            {/* Display video URL or embedded player */}
-            <a href={video.url} target="_blank" rel="noopener noreferrer">Watch Video</a>
+            {/* Optional: Check if you have a video file URL and display a video player */}
+            {video.videoFile && (
+              <video controls src={`http://localhost:5000/uploads/${video.videoFile}`} style={{ width: '100%', maxHeight: '400px' }}>
+                Your browser does not support the video tag.
+              </video>
+            )}
+            {/* If you also have an external video URL, you can include a link to it */}
+            {video.url && (
+              <div>
+                <a href={video.url} target="_blank" rel="noopener noreferrer">Watch Video</a>
+              </div>
+            )}
           </div>
         ))
       ) : (

@@ -1,0 +1,143 @@
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 20px;
+   
+}
+
+.course-card {
+    border: 1px solid #ddd;
+    border-radius: 0; /* Adjusted for sharp edges */
+    padding: 20px;
+    text-align: center;
+    background-color: #ddd;
+    width: calc(33.333% - 1rem); /* For three cards in a row, adjust as needed */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.course-card h3 {
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+.course-card p {
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+.layout-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.courses-list, .featured-videos, .student-details {
+    flex: 1;
+    margin: 10px;
+}
+
+.video-card {
+    margin-bottom: 20px;
+    border-radius: 0; /* Adjusted for sharp edges */
+}
+
+/* Add responsive design considerations, additional styling as needed */
+courses-list, .featured-videos, .student-details {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.course-card, .video-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for course and video cards */
+.course-card:hover, .video-card:hover {
+    transform: scale(1.05); /* Slightly scale up the card */
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2); /* Add shadow for depth */
+    cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+/* Grid layout for courses with three items per row */
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .layout-container {
+        flex-direction: column;
+    }
+
+    .courses-list, .featured-videos, .student-details {
+        margin: 10px 0;
+    }
+
+    .courses-container {
+        grid-template-columns: 1fr; /* Adjust for a single column on smaller screens */
+    }
+}
+
+/* Ensure the layout container takes full width */
+.featured-layout {
+    display: flex;
+    flex-direction: row; /* This ensures the flex items line up in a row */
+    width: 100%; /* Make sure the container spans the full width */
+}
+
+.sidebar {
+    flex-basis: 20%; /* Adjust this value based on desired sidebar width */
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1; /* Allows the main content to fill the rest of the space */
+    padding: 20px;
+}
+
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.course-card {
+    border: 1px solid #ddd;
+    border-radius: 0; /* For sharp edges */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsive design considerations */
+@media (max-width: 768px) {
+    .featured-layout {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .course-card {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+.sidebar .nav-link {
+    color: #20c997 !important; /* Force color */
+}
+
+.sidebar .nav-link.active {
+    background-color: #20c997 !important; /* Force background color for active */
+    color: #fff !important; /* Force text color for active */
+}
+
+@media (max-width: 768px) {
+    .course-card {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
