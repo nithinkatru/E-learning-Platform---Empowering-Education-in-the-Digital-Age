@@ -1,49 +1,87 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import './ExploreCourses.css'; // Make sure to include styles for full view
 
 function ExploreCourses() {
   const [videos, setVideos] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState('All');
+  const [selectedVideo, setSelectedVideo] = useState(null); // State for the selected video
+  const videoElementsRef = useRef({});
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/videos')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
+    fetch('http://localhost:5000/api/courses')
+      .then(response => response.json())
+      .then(data => {
+        setCourses([{ _id: 'All', title: 'All Courses' }, ...data]);
       })
+      .catch(error => console.error('Error fetching courses:', error));
+
+    fetch('http://localhost:5000/api/videos')
+      .then(response => response.json())
       .then(data => {
         setVideos(data);
       })
-      .catch(error => {
-        console.error('Error fetching videos:', error);
-      });
+      .catch(error => console.error('Error fetching videos:', error));
   }, []);
 
+  const filteredVideos = selectedCourse === 'All' ? videos : videos.filter(video => video.courseId === selectedCourse);
+
+  // Function to handle video selection
+  const handleVideoSelect = (video) => {
+    setSelectedVideo(video);
+  };
+
+  // Render the selected video in a larger view
+  const renderSelectedVideo = () => (
+    <div className="selected-video-container">
+      <video
+        src={`http://localhost:5000/${selectedVideo.videoFile.replace('\\', '/')}`}
+        controls
+        autoPlay
+        style={{ width: '100%', maxHeight: '80vh' }}
+      />
+      <h3>{selectedVideo.title}</h3>
+      <p>{selectedVideo.description}</p>
+      <button onClick={() => setSelectedVideo(null)}>Close</button>
+    </div>
+  );
+
   return (
-    <div>
-      <h2>Explore Courses</h2>
-      {videos.length > 0 ? (
-        videos.map(video => (
-          <div key={video._id} style={{ marginBottom: '20px' }}>
-            <h3>{video.title}</h3>
-            <p>{video.description}</p>
-            {/* Optional: Check if you have a video file URL and display a video player */}
-            {video.videoFile && (
-              <video controls src={`http://localhost:5000/uploads/${video.videoFile}`} style={{ width: '100%', maxHeight: '400px' }}>
-                Your browser does not support the video tag.
-              </video>
-            )}
-            {/* If you also have an external video URL, you can include a link to it */}
-            {video.url && (
-              <div>
-                <a href={video.url} target="_blank" rel="noopener noreferrer">Watch Video</a>
+    <div className="explore-courses-layout">
+      <aside className="sidebar">
+        <h3>Courses</h3>
+        <select onChange={(e) => setSelectedCourse(e.target.value)} value={selectedCourse}>
+          {courses.map(course => (
+            <option key={course._id} value={course._id}>{course.title}</option>
+          ))}
+        </select>
+      </aside>
+      <div className="videos-container">
+        {selectedVideo ? (
+          renderSelectedVideo()
+        ) : (
+          filteredVideos.length > 0 ? (
+            filteredVideos.map(video => (
+              <div key={video._id} className="video-preview"
+                  onClick={() => handleVideoSelect(video)}>
+                <video
+                  ref={el => videoElementsRef.current[video._id] = el}
+                  src={`http://localhost:5000/${video.videoFile.replace('\\', '/')}`}
+                  muted
+                  loop
+                  style={{ width: '100%', height: '100%' }}
+                />
+                <div className="video-info">
+                  <h3>{video.title}</h3>
+                  <p>{video.description}</p>
+                </div>
               </div>
-            )}
-          </div>
-        ))
-      ) : (
-        <p>No videos available.</p>
-      )}
+            ))
+          ) : (
+            <p>No videos available for this course.</p>
+          )
+        )}
+      </div>
     </div>
   );
 }

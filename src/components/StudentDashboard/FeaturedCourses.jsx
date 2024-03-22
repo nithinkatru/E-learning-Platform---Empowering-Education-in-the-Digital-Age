@@ -1,3 +1,5 @@
+// featuredcourses.jsx
+
 import React, { useState, useEffect } from 'react';
 import './FeaturedCourses.css'; // Ensure this path is correct for your CSS
 
