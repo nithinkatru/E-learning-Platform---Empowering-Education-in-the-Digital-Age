@@ -1,79 +1,177 @@
-/* Container styles */
-.courses-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-top: 20em !important;
-  }
-  
-  /* Form styling */
-  .course-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .course-form h2 {
-    margin-bottom: 20px;
-  }
-  
-  .course-form input[type="text"],
-  .course-form input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .course-form input[type="submit"] {
-    background-color: #0056b3;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .course-form input[type="submit"]:disabled {
-    background-color: #cccccc;
-  }
-  
-  /* Course list styles */
-  .course-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .course-item {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .course-item span {
-    font-size: 18px;
-  }
-  
-  .course-actions button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .course-actions .edit-button {
-    background-color: #f0ad4e;
-    color: white;
-  }
-  
-  .course-actions .delete-button {
-    background-color: #d9534f;
-    color: white;
-  }
-  
+/* Educator.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #1eb2a6;
+}
+
+.admin-dashboard {
+  padding: 20px;
+  padding-top:40%;
+  color: #1eb2a6;
+}
+
+.admin-dashboard h2 {
+  color: #1eb2a6;
+}
+
+.dashboard-btn {
+  background-color: #1eb2a6;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: #17a295;
+}
+
+.hero {
+  background-color: #1eb2a6;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Adjustments for sharp edges and theme consistency */
+.button, .input, .select {
+  border-radius: 0; /* Sharp edges */
+}
+
+.input, .select {
+  border: 2px solid #1eb2a6;
+  color: #1eb2a6;
+}
+
+.input:focus, .select:focus {
+  border-color: #17a295;
+  outline: none;
+}
+
+/* Add more custom styles as needed */
+/* CourseForm Styles within Educator.css */
+
+/* Base styling for form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form elements */
+  max-width: 400px; /* Adjust based on preference */
+  margin: auto; /* Center the form */
+  padding: 20px;
+  background-color: white;
+  border: 2px solid #1eb2a6; /* Theme color border */
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* Optional: Adds subtle shadow */
+}
+
+form h2 {
+  color: #1eb2a6; /* Theme color for form heading */
+  text-align: center; /* Center-align the heading */
+}
+
+/* Styling for inputs */
+form input[type="text"] {
+  padding: 10px;
+  border: 1px solid #1eb2a6; /* Theme color border */
+  border-radius: 0; /* Sharp edges */
+  color: #1eb2a6; /* Theme color text */
+}
+
+form input[type="text"]:focus {
+  outline: none;
+  border-color: #17a295; /* Slightly darker shade for focus */
+}
+
+/* Styling for submit button */
+form input[type="submit"] {
+  padding: 10px;
+  background-color: #1eb2a6; /* Theme color background */
+  color: white; /* Text color */
+  border: none;
+  border-radius: 0; /* Sharp edges */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background-color: #17a295; /* Slightly darker shade on hover */
+}
+
+form input[type="submit"]:disabled {
+  background-color: #cccccc; /* Disabled button background */
+  cursor: not-allowed;
+}
+
+/* Courses Section Styling */
+.courses-section {
+  margin-top: 20px !important;
+}
+
+.course-item {
+  background-color: #f9f9f9 !important;
+  border-left: 5px solid #17a295 !important;
+  padding: 10px 15px !important;
+  margin-bottom: 10px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.course-item h3 {
+  margin: 0 !important;
+  color: #17a295 !important;
+  font-size: 1.2rem !important;
+}
+
+.course-item p {
+  margin: 5px 0 !important;
+  color: #666 !important;
+}
+
+.course-actions {
+  display: flex !important;
+  gap: 10px !important;
+}
+
+.course-actions button {
+  background-color: #17a295 !important;
+  color: white !important;
+  border: none !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.course-actions button:hover {
+  background-color: #149683 !important;
+}
+
+.course-actions button.edit-btn {
+  background-color: #ffa500 !important; /* Orange for edit */
+}
+
+.course-actions button.edit-btn:hover {
+  background-color: #cc8400 !important;
+}
+
+.course-actions button.delete-btn {
+  background-color: #ff4500 !important; /* Red for delete */
+}
+
+.course-actions button.delete-btn:hover {
+  background-color: #cc3700 !important;
+}

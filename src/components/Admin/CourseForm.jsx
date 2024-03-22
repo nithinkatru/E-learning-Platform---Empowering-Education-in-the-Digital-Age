@@ -1,5 +1,6 @@
 // CourseForm.jsx
 import React from 'react';
+import "./Educator.css";
 
 function CourseForm({ course, onSave, onChange, saving = false }) {
   const handleChange = (event) => {
