@@ -1,0 +1,79 @@
+.TakeExam-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #1eb2a6;
+    border-radius: 10px;
+    background: #ecf0f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.TakeExam-container h1, 
+.TakeExam-container h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.TakeExam-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.TakeExam-container li {
+    background: #fff;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.TakeExam-container button {
+    padding: 10px 15px;
+    background-color: #1eb2a6;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.TakeExam-container button:hover {
+    background-color: #1eb2a6;
+}
+
+.TakeExam-container .question-container {
+    background: #fff;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.TakeExam-container .question-container label {
+    display: block;
+    margin: 5px 0;
+}
+
+/* Input styles for radio buttons */
+.TakeExam-container input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Submit button for the answers */
+.TakeExam-container .submit-answers {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.TakeExam-container .submit-answers:hover {
+    background-color: #2980b9;
+}
