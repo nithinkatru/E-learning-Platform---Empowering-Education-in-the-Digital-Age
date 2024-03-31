@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import "./Educator.css";
+import "../Admin/Educator.css";
 import Heading from '../common/heading/Heading';
-import AddVideoForm from './AddVideoForm';
-import CoursesPage from './CoursesPage';
-import AnalyticsPage from './AnalyticsPage';
-import CourseForm from './CourseForm';
-import QuizManager from './QuizManager'; // Assuming this is your form for adding/editing courses
+import AddVideoForm from '../Admin/AddVideoForm';
+import CoursesPage from '../Admin/CoursesPage';
+import AnalyticsPage from '../Admin/AnalyticsPage';
+import CourseForm from '../Admin/CourseForm';
+import QuizManager from '../Admin/QuizManager'; // Assuming this is your form for adding/editing courses
 
-function AdminDashboard() {
+function SuperAdminDashboard() {
     const [videoInfo, setVideoInfo] = useState({ title: '', url: '', description: '', videoFile: null });
     const [courseInfo, setCourseInfo] = useState({ _id: null, title: '', description: '', url: '' });
     const [showSection, setShowSection] = useState('');
@@ -81,7 +81,7 @@ function AdminDashboard() {
             <div className="admin-dashboard">
                 {renderSidebar()}
                 <div className="main-content">
-                    <h2>Educator Dashboard</h2>
+                    <h2>Admin Dashboard</h2>
                     {/* Render forms or pages based on the selected section */}
                     {showSection === 'addVideo' && <AddVideoForm videoInfo={videoInfo} />}
                     {showSection === 'addCourse' && (
@@ -103,4 +103,4 @@ function AdminDashboard() {
     );
 }
 
-export default AdminDashboard;
+export default SuperAdminDashboard;

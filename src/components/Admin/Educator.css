@@ -7,7 +7,7 @@ body {
 
 .admin-dashboard {
   padding: 20px;
-  padding-top:40%;
+  padding-top: 20px; /* Reduced from 40% to a fixed value that doesn't push content down too far */
   color: #1eb2a6;
 }
 
@@ -32,9 +32,11 @@ body {
 .hero {
   background-color: #1eb2a6;
   color: #fff;
-  padding: 20px;
+  padding: 14px; /* Adjusted from 20px to approximately 30% less for top and bottom */
   margin-bottom: 20px;
+  padding-top: 20px;
 }
+
 
 .container {
   max-width: 1200px;
@@ -62,8 +64,7 @@ body {
   outline: none;
 }
 
-/* Add more custom styles as needed */
-/* CourseForm Styles within Educator.css */
+
 
 /* Base styling for form */
 form {
@@ -175,3 +176,41 @@ form input[type="submit"]:disabled {
 .course-actions button.delete-btn:hover {
   background-color: #cc3700 !important;
 }
+
+.admin-dashboard {
+  display: flex;
+}
+
+.sidebar {
+  flex-basis: 200px; /* adjust width as necessary */
+  flex-shrink: 0;
+  height: 100vh;
+  background-color: #f4f4f4; /* Sidebar background color */
+  padding: 20px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.1); /* Optional: adds shadow to the sidebar */
+}
+
+.sidebar-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px; /* Space between buttons */
+  background-color: #009688; /* Button background color */
+  color: white;
+  text-align: left;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar-btn:hover {
+  background-color: #00796B; /* Button hover state */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  /* Add any additional styling you need for your main content */
+}
+
+/* Continue with other styles as before */
