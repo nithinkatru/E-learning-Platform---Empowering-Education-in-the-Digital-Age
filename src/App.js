@@ -16,6 +16,7 @@ import Coursespage from './components/Admin/CoursesPage.jsx';
 import StudentDashboard from './components/StudentDashboard/StudentWelcome.jsx';
 import ExploreCourses from "./components/StudentDashboard/ExploreCourses.jsx";
 import AnalyticsPage from "./components/Admin/AnalyticsPage.jsx";
+import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
 
 
 
@@ -41,7 +42,7 @@ function App() {
         <Route exact path='/courses' element={<CourseHome />} />
         <Route exact path='/team' element={<Team />} />
         <Route exact path='/AnalyticsPage' element={<AnalyticsPage />} />
-       
+        <Route exact path='/SuperAdmin' element={<SuperAdmin />} />
         
 
 
