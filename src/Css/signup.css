@@ -1,4 +1,5 @@
 /* Signup.css */
+
 body, html {
   height: 100%;
   margin: 0;
@@ -15,17 +16,42 @@ body {
 
 /* Styling for the signup container to ensure readability over the background */
 .signup-container {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  /* Other styles */
-
- 
-  max-width: 800px!important;
-  margin: 5% auto !important;
-  padding: 20px !important;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a subtle shadow for better contrast */
+  max-width: 500px; /* Adjust max-width as needed */
+  margin: auto; /* Center the container horizontally */
+  margin-top:70vh;
+  padding: 20px;
+  border-radius: 0px;
   animation: slideIn 0.5s ease; /* Reuse the slideIn animation */
+}
+
+/* Adjust hero section so it doesn't overlap content */
+.hero {
+  background-image: url("../../public/images/bg.webp") !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  /* Remove position absolute and top/left/z-index properties */
+  width: 100% !important;
+  height: 100vh !important; /* Adjust as needed */
+  padding-top: 20% !important;
+  padding-right: 50px !important;
+  color: #fff !important;
+}
+
+/* Ensure signup form is positioned correctly */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 40vh !important;
+}
+
+/* Adjust card body to not overlap the hero section */
+.card-body {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 25em !important;
+  
 }
 
 /* Adjusts the form's appearance */
@@ -34,6 +60,9 @@ body {
   flex-direction: column;
 }
 
+.signup-container{
+  width: 40% !important;
+}
 .form-group {
   margin-bottom: 15px;
 }
@@ -50,6 +79,7 @@ select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  width: 100%; /* Ensure input fields take full width */
 }
 
 button {
@@ -61,6 +91,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%; /* Ensure button takes full width */
 }
 
 button:hover {
@@ -97,6 +128,7 @@ button:hover {
 @media screen and (max-width: 768px) {
   .signup-container {
     padding: 10px;
-    margin-top: 20%;
+    margin-top: 10%;
   }
 }
+

@@ -6,6 +6,7 @@ import CoursesPage from './CoursesPage';
 import AnalyticsPage from './AnalyticsPage';
 import CourseForm from './CourseForm';
 import QuizManager from './QuizManager'; // Assuming this is your form for adding/editing courses
+import { Link } from 'react-router-dom';
 
 function AdminDashboard() {
     const [videoInfo, setVideoInfo] = useState({ title: '', url: '', description: '', videoFile: null });
@@ -19,10 +20,6 @@ function AdminDashboard() {
         }));
     };
 
-    const handleViewAnalyticsClick = () => {
-        setShowSection('viewAnalytics');
-      };
-      
     const renderSidebar = () => {
         return (
             <div className="sidebar">
@@ -66,14 +63,15 @@ function AdminDashboard() {
                         <Heading subtitle='WELCOME TO NEXTSKILL' title='Best Online Education Expertise' />
                         <p>Far far away, behind the word mountains...</p>
                     </div>
-                    
-                     {/* <button className='primary-btn' onClick={goToEducatorDashboard}>
-                        EducatorDashboard <i className='fa fa-long-arrow-alt-right'></i>
-                    </button> */}
 
-                    <button className='primary-btn' onClick={handleViewAnalyticsClick}>
-  View Analytics <i className='fa fa-long-arrow-alt-right'></i>
-</button>
+                    <button className='primary-btn'>
+                SIGN IN <i className='fa fa-long-arrow-alt-right'></i>
+              </button>
+              <button className='primary-btn'>
+                SIGN IN <i className='fa fa-long-arrow-alt-right'></i>
+              </button>
+              
+                    
 
                 </div>
                 
@@ -98,7 +96,6 @@ function AdminDashboard() {
                 </div>
             </div>
 
-           
         </>
     );
 }

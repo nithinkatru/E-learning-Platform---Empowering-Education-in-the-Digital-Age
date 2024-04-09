@@ -9,24 +9,31 @@
   left: 0 !important;
   z-index: -1 !important;
   width: 100% !important;
-  height: 100vh !important;
+  height: 70vh !important;
   padding-top: 20% !important;
   padding-right: 50px !important;
   color: #fff !important;
 }
+
 .hero #heading h3 {
   color: #fff;
 }
+
 .hero #heading {
   text-align: left;
   margin: 0;
   padding: 0;
 }
+
 .login-form {
   background-color: #fff !important;
   border-radius: 5px;
   padding: 20px;
+  margin-top: 60% !important;
+  margin-left: 20% !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-top: 40%;
+
 }
 
 .login-form h2 {

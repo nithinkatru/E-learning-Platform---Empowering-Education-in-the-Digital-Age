@@ -27,6 +27,7 @@ body {
 .container {
   max-width: 85%;
   margin: auto;
+ 
 }
 .flexSB {
   display: flex;

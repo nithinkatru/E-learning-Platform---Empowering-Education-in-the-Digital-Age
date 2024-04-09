@@ -214,3 +214,17 @@ form input[type="submit"]:disabled {
 }
 
 /* Continue with other styles as before */
+.primary-btn {
+  background-color: #149683 !important;
+  color: #fff; /* Text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Add pointer cursor */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  width:20% !important;
+}
+
+.primary-btn:hover {
+  background-color: #11706e !important; /* Darker shade on hover */
+}
