@@ -7,6 +7,8 @@ import AnalyticsPage from './AnalyticsPage';
 import CourseForm from './CourseForm';
 import QuizManager from './QuizManager'; // Assuming this is your form for adding/editing courses
 import { Link } from 'react-router-dom';
+import NoticeBoard from'../Superadmin/NoticeBoard';
+import EducatorReleaseGrades from '../Admin/EducatorReleaseGrades';
 
 function AdminDashboard() {
     const [videoInfo, setVideoInfo] = useState({ title: '', url: '', description: '', videoFile: null });
@@ -18,7 +20,7 @@ function AdminDashboard() {
             ...prevCourse,
             [name]: value,
         }));
-    };
+    };  
 
     const renderSidebar = () => {
         return (
@@ -29,6 +31,8 @@ function AdminDashboard() {
                 <button className="sidebar-btn" onClick={() => setShowSection('viewAnalytics')}>View Analytics</button>
                 <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>Manage Assignments</button>
                 <button className="sidebar-btn" onClick={() => setShowSection('manageQuizzes')}>Manage Quizzes</button>
+                <button className="sidebar-btn" onClick={() => setShowSection('EducatorReleaseGrades')}>EducatorReleaseGrades</button>
+
             </div>
         );
     };
@@ -80,6 +84,9 @@ function AdminDashboard() {
                 {renderSidebar()}
                 <div className="main-content">
                     <h2>Educator Dashboard</h2>
+                    <div className="notice-sidebar" style={{ width: '70em' }}>
+                    <NoticeBoard />
+                </div>
                     {/* Render forms or pages based on the selected section */}
                     {showSection === 'addVideo' && <AddVideoForm videoInfo={videoInfo} />}
                     {showSection === 'addCourse' && (
@@ -93,6 +100,8 @@ function AdminDashboard() {
                     {showSection === 'viewCourses' && <CoursesPage />}
                     {showSection === 'viewAnalytics' && <AnalyticsPage />}
                     {showSection === 'QuizManager' && <QuizManager />}
+                    {showSection === 'EducatorReleaseGrades' && <EducatorReleaseGrades />}
+                    
                 </div>
             </div>
 

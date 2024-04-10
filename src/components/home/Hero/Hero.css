@@ -34,3 +34,47 @@
     width: 100%;
   }
 }
+
+.Loginbtn {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Default font size */
+    margin: 4px 2px;
+    cursor: pointer; /* Cursor changes to a hand icon on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: all 0.3s ease 0s; /* Smooth transition for hover effects */
+    width: 20vh;
+    height: 5vh;
+}
+
+.Loginbtn i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Add a darker green color on hover */
+.Loginbtn:hover {
+    background-color: #45a049;
+}
+.btn.custom-button-icon {
+  background-color: #4CAF50 !important; /* Green background */
+  border: none !important;
+  color: white !important; /* White text */
+  padding: 10px 20px !important; /* Some padding */
+  font-size: 16px !important; /* Default font size */
+  border-radius: 5px !important; /* Rounded corners */
+  transition: all 0.3s ease 0s !important; /* Smooth transition for hover effects */
+}
+
+.btn.custom-button-icon i {
+  margin-right: 10px !important; /* Space between icon and text */
+}
+
+/* Add a darker green color on hover */
+.btn.custom-button-icon:hover {
+  background-color: #45a049 !important;
+}

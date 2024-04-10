@@ -25,28 +25,7 @@ function FeaturedCourses() {
 
     return (
         <div className="d-flex">
-            <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width: "250px"}}>
-                <ul className="nav nav-pills flex-column mb-auto">
-                    <li className="nav-item">
-                        <a href="#" className="nav-link active d-flex align-items-center">
-                            {/* <img src={accountIcon} alt="Account" width="24" height="24" className="me-2" /> */}
-                            Account Info
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-link d-flex align-items-center">
-                            {/* <img src={gradesIcon} alt="Grades" width="24" height="24" className="me-2" /> */}
-                            Grades
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-link d-flex align-items-center">
-                            {/* <img src={assignmentsIcon} alt="Assignments" width="24" height="24" className="me-2" /> */}
-                            Assignments
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            
             <div className="main-content flex-grow-1 p-3">
                 <h2>Featured Courses</h2>
                 <div className="courses-container d-flex flex-wrap">
