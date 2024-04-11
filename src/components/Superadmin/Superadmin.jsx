@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import "../Admin/Educator.css";
+import "../Educator/Educator.css";
 import Heading from '../common/heading/Heading';
-import AddVideoForm from '../Admin/AddVideoForm';
-import CoursesPage from '../Admin/CoursesPage';
-import AnalyticsPage from '../Admin/AnalyticsPage';
-import CourseForm from '../Admin/CourseForm';
-import QuizManager from '../Admin/QuizManager';
+import AddVideoForm from '../Educator/AddVideoForm';
+import CoursesPage from '../Educator/CoursesPage';
+import AnalyticsPage from '../Educator/AnalyticsPage';
+import CourseForm from '../Educator/CourseForm';
+import QuizManager from '../Educator/QuizManager';
 import AdminEducatorCRUD from '../Superadmin/AdminEducatorCRUD';
 import NoticeBoard from'./NoticeBoard';
 import axios from 'axios'; 

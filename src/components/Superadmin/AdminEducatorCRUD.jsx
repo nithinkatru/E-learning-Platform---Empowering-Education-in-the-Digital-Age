@@ -1,144 +1,88 @@
-// AdminEducatorCRUD.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './AdminEducatorCRUD.css'; // Ensure you have this CSS file for styles
+import './AdminEducatorCRUD.css'; // Ensure you have this CSS for styling
 
 const AdminEducatorCRUD = () => {
-    const [educators, setEducators] = useState([]);
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-        password: '',
-    });
+    const [users, setUsers] = useState([]);
     const [viewMode, setViewMode] = useState('view');
-    const [isEditMode, setIsEditMode] = useState(false);
-    const [editId, setEditId] = useState(null);
+    const [filter, setFilter] = useState('all'); // 'all', 'educator', or 'student'
 
     useEffect(() => {
-        fetchEducators();
+        fetchUsers();
     }, []);
 
-    const fetchEducators = async () => {
+    const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/educators');
-            setEducators(response.data);
+            const response = await axios.get('http://localhost:5000/api/users');
+            setUsers(response.data);
         } catch (error) {
-            console.error('Error fetching educators:', error);
+            console.error('Error fetching users:', error);
         }
     };
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmitEducator = async (e) => {
-        e.preventDefault();
-        const apiURL = isEditMode
-            ? `http://localhost:5000/api/users/${editId}`
-            : 'http://localhost:5000/api/users';
-        const method = isEditMode ? 'put' : 'post';
-
-        try {
-            await axios[method](apiURL, {
-                ...formData,
-                role: 'educator',
-            });
-            setFormData({ firstName: '', lastName: '', email: '', phoneNumber: '', password: '' });
-            setIsEditMode(false);
-            setEditId(null);
-            fetchEducators();
-            setViewMode('view'); // Switch back to view mode after operation
-        } catch (error) {
-            console.error('Error submitting educator:', error);
+    const handleEditClick = async (user) => {
+        // Use a modal or form for real applications
+        const updatedFirstName = prompt("Edit First Name", user.firstName);
+        const updatedLastName = prompt("Edit Last Name", user.lastName);
+        if (updatedFirstName && updatedLastName) {
+            try {
+                const response = await axios.put(`http://localhost:5000/api/users/${user._id}`, {
+                    ...user,
+                    firstName: updatedFirstName,
+                    lastName: updatedLastName,
+                });
+                fetchUsers(); // Refresh list
+                console.log('User updated:', response.data);
+            } catch (error) {
+                console.error('Error updating user:', error);
+            }
         }
     };
 
-    const handleEditClick = (educator) => {
-        setFormData({
-            firstName: educator.firstName,
-            lastName: educator.lastName,
-            email: educator.email,
-            phoneNumber: educator.phoneNumber,
-            password: '', // Consider security implications
-        });
-        setIsEditMode(true);
-        setEditId(educator._id);
-        setViewMode('add'); // Switch to form view
-    };
+    const handleDeleteUser = async (id) => {
+        const url = `http://localhost:5000/api/users/${id}`;
+        console.log('Attempting to delete at URL:', url); // Debugging log
+        try {
+          await axios.delete(url);
+          fetchUsers(); // Refresh the list after deletion
+        } catch (error) {
+          console.error('Error deleting user:', error);
+        }
+      };
+      
 
-   // Other parts of your component remain unchanged
-
-const handleDeleteEducator = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`);
-      // Refresh the educators list after deletion
-      const updatedEducators = educators.filter(educator => educator._id !== id);
-      setEducators(updatedEducators);
-    } catch (error) {
-      console.error('Error deleting educator:', error.response ? error.response.data : 'Server Error');
-    }
-  };
-  
-  
+    const filteredUsers = filter === 'all' ? users : users.filter(user => user.role === filter);
 
     return (
         <div>
-            <button onClick={() => { setViewMode('add'); setIsEditMode(false); }}>Add Educator</button>
-            <button onClick={() => setViewMode('view')}>View Educators</button>
-
-            {viewMode === 'add' && (
-                <div>
-                    <h2>{isEditMode ? 'Edit' : 'Add'} Educator</h2>
-                    <form onSubmit={handleSubmitEducator}>
-                        {/* Form fields */}
-                        <div>
-                            <label>First Name:</label>
-                            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
-                        </div>
-                        <div>
-                            <label>Last Name:</label>
-                            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
-                        </div>
-                        <div>
-                            <label>Email:</label>
-                            <input type="email" name="email" value={formData.email} onChange={handleChange} />
-                        </div>
-                        <div>
-                            <label>Phone Number:</label>
-                            <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-                        </div>
-                        <div>
-                            <label>Password:</label>
-                            <input type="password" name="password" value={formData.password} onChange={handleChange} />
-                        </div>
-                        <button type="submit">{isEditMode ? 'Update' : 'Add'} Educator</button>
-                    </form>
-                </div>
-            )}
-
+            <div>
+                <button onClick={() => setFilter('all')}>All</button>
+                <button onClick={() => setFilter('educator')}>Educators</button>
+                <button onClick={() => setFilter('student')}>Students</button>
+            </div>
             {viewMode === 'view' && (
                 <div>
-                    <h2>Educators List</h2>
+                    <h2>Users List</h2>
                     <table>
                         <thead>
                             <tr>
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {educators.map((educator) => (
-                                <tr key={educator._id}>
-                                    <td>{educator.firstName}</td>
-                                    <td>{educator.lastName}</td>
-                                    <td>{educator.email}</td>
+                            {filteredUsers.map((user) => (
+                                <tr key={user._id}>
+                                    <td>{user.firstName}</td>
+                                    <td>{user.lastName}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.role}</td>
                                     <td>
-                                        <button onClick={() => handleEditClick(educator)}>Edit</button>
-                                        <button onClick={() => handleDeleteEducator(educator._id)}>Delete</button>
+                                        <button onClick={() => handleEditClick(user)}>Edit</button>
+                                        <button onClick={() => handleDeleteUser(user._id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}

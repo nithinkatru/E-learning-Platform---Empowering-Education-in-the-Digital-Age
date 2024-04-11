@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import md5 from 'md5'; // Import MD5 library
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import '../Css/signup.css';
 import axios from 'axios'; // Import Axios
@@ -30,7 +29,7 @@ const Signup = () => {
     // Additional client-side validation can be added here
     try {
       const response = await axios.post('http://localhost:5000/api/users', formData);
-      // Assume the backend handles password hashing
+
       console.log(response.data); // For debugging
       alert('Signup successful!');
       setFormData({

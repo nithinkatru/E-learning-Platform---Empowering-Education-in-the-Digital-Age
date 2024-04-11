@@ -8,7 +8,7 @@ import CourseForm from './CourseForm';
 import QuizManager from './QuizManager'; // Assuming this is your form for adding/editing courses
 import { Link } from 'react-router-dom';
 import NoticeBoard from'../Superadmin/NoticeBoard';
-import EducatorReleaseGrades from '../Admin/EducatorReleaseGrades';
+import EducatorReleaseGrades from './EducatorReleaseGrades';
 
 function AdminDashboard() {
     const [videoInfo, setVideoInfo] = useState({ title: '', url: '', description: '', videoFile: null });
