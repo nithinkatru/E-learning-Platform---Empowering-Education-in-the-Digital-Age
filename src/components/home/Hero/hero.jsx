@@ -8,7 +8,7 @@ import "./Hero.css"
 const Hero = () => {
   return (
     <>
-      <section className='hero'>
+      <div className='hero'>
         <div className='container'>
           <div className='row'>
             <Heading subtitle='WELCOME TO NEXTSKILL' title='Best Online Education Expertise' />
@@ -16,16 +16,17 @@ const Hero = () => {
             <div className='button'>
               
               <button className='primary-btn'>
-                SIGN IN <i className='fa fa-long-arrow-alt-right'></i>
-              </button>
-              <button>
-                LOGIN <i className='fa fa-long-arrow-alt-right'></i>
-              </button>
+              SIGN IN&nbsp;<i className='fa fa-long-arrow-alt-right'></i>
+            </button> 
+            <button className='primary-btn' >
+              LOGIN&nbsp;<i className='fa fa-long-arrow-alt-right'></i>
+            </button>
+
             </div>
           </div>
         </div>
 
-      </section>
+      </div>
 
      
       <div className='margin'></div>

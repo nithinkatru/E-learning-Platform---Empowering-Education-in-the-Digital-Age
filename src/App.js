@@ -27,7 +27,7 @@ import TakeExam from "./components/StudentDashboard/TakeExam.jsx";
 function App() {
   return (
     <div>
-    <UserProvider>
+    {/* <UserProvider> */}
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -48,12 +48,12 @@ function App() {
         <Route exact path='/QuizManager' element={<QuizManager />} />  */}
         <Route exact path='/TakeExam' element={<TakeExam />} />
         {/* <Route exact path='/SuperAdmin' element={<SuperAdmin />} /> */}
-        // <Route exact path='/AnalyticsPage' element={<AnalyticsPage />} />
-        // <Route exact path='/SuperAdmin' element={<SuperAdmin />} />
+        {/* <Route exact path='/AnalyticsPage' element={<AnalyticsPage />} />
+        <Route exact path='/SuperAdmin' element={<SuperAdmin />} /> */}
         
       </Routes>
       <Footer />
-      </UserProvider>
+      {/* </UserProvider> */}
     </div>
   );
 }
