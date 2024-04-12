@@ -1,74 +1,75 @@
-// Login.jsx
-
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import '../Css/login.css'; // Import your custom login styles
-// import Hero from '../components/home/Hero/hero'; // Import the Hero component
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../src/UserContext'; // Adjust the import path as needed
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
-    email: '',
-    password: '' 
-  });
+  const navigate = useNavigate();
+  const { setUser } = useUser();
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
 
+  console.log("Login Component Rendered");
+
   const handleChange = (e) => {
-    setCredentials({...credentials, [e.target.name]: e.target.value});
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    console.log(`Field ${e.target.name} updated to: ${e.target.value}`);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrorMessage(''); // Clear any existing error message
-    console.log("after handle submit");
-    try {
-      console.log("in try");
-      const response = await axios.post('http://localhost:5000/api/login', credentials);
-      console.log(response.data);
-      alert(response.data.message); // Display success message
-  
-      if (response.data.role === 'educator') {
-        window.location.href = '/journal'; // Redirect to admin dashboard
-      } else if (response.data.role === 'student') {
-        window.location.href = '/studentdashboard'; // Redirect to student dashboard
-      } else {
-        setErrorMessage('Unknown role'); // Handle unknown roles
-      }
-  
-      console.log("entering catch");
-    } catch (error) {
-      console.error("Error during login:", error); // Log any errors
-      setErrorMessage('Login failed'); // Display error message
+  // Inside your Login component
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.post('http://localhost:5000/api/login', credentials);
+    console.log('Login successful', response.data);
+    setUser(response.data); // Set user data in context
+    localStorage.setItem('user', JSON.stringify(response.data)); // Also set user data in localStorage
+    navigateToDashboard(response.data.role);
+  } catch (error) {
+    console.error('Login failed:', error.response?.data || 'Login failed. Please try again.');
+    setErrorMessage(error.response?.data || 'Login failed. Please try again.');
+  }
+};
+
+
+  const navigateToDashboard = (role) => {
+    console.log(`Navigating to ${role} dashboard`);
+    if (role === 'educator') {
+      navigate('/Educatordashboard');
+    } else if (role === 'student') {
+      navigate('/StudentDashboard');
+    } else {
+      navigate('/');
     }
   };
-  
+
   return (
-    <>
-      <div className="container">
-        {/* <Hero />  */}
-        <div className="row justify-content-center">
-          <div className="col-md-6 login-form">
-            <form onSubmit={handleSubmit}>
-              <h2>Login</h2>
-              <div className="form-group">
-                <label>Email:</label>
-                <input type="email" name="email" value={credentials.email} onChange={handleChange} className="form-control" required />
-              </div>
-              <div className="form-group">
-                <label>Password:</label>
-                <input type="password" name="password" value={credentials.password} onChange={handleChange} className="form-control" required />
-              </div>
-              
-              {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
-              <button type="submit" className="btn btn-primary">Login</button>
-            </form>
-            <p className="mt-2">
-              Don't have an account? <Link to="/signup">Sign up</Link>
-            </p>
-          </div>
-        </div>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={credentials.email}
+          onChange={handleChange}
+          className="form-control"
+          required
+        />
       </div>
-    </>
+      <div className="form-group">
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={credentials.password}
+          onChange={handleChange}
+          className="form-control"
+          required
+        />
+      </div>
+      {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+      <button type="submit" className="btn btn-primary">Login</button>
+    </form>
   );
 };
 
