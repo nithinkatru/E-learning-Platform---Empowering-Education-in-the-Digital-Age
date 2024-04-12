@@ -19,7 +19,7 @@ import ExploreCourses from "./components/StudentDashboard/ExploreCourses.jsx";
 // import QuizManager from "./components/Educator/QuizManager.jsx";
 import TakeExam from "./components/StudentDashboard/TakeExam.jsx";
 // import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
-// import { UserProvider } from './src/UserContext.js';
+import { UserProvider } from './src/UserContext.js';
 // import AnalyticsPage from "./components/Admin/AnalyticsPage.jsx";
 // import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
 
@@ -27,7 +27,7 @@ import TakeExam from "./components/StudentDashboard/TakeExam.jsx";
 function App() {
   return (
     <div>
-    {/* <UserProvider> */}
+    <UserProvider>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -53,7 +53,7 @@ function App() {
         
       </Routes>
       <Footer />
-      {/* </UserProvider> */}
+      </UserProvider>
     </div>
   );
 }

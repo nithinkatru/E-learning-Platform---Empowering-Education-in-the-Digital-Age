@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import { useUser } from '../src/UserContext'; // Adjust the import path as needed
+import { useUser } from '../src/UserContext'; // Adjust the import path as needed
 
 const Login = () => {
   const navigate = useNavigate();
-  // const { setUser } = useUser();
+  const { setUser } = useUser();
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -22,7 +22,7 @@ const handleSubmit = async (e) => {
   try {
     const response = await axios.post('http://localhost:5000/api/login', credentials);
     console.log('Login successful', response.data);
-    // setUser(response.data); // Set user data in context
+    setUser(response.data); // Set user data in context
     localStorage.setItem('user', JSON.stringify(response.data)); // Also set user data in localStorage
     navigateToDashboard(response.data.role);
   } catch (error) {
