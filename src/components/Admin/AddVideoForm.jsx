@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./Educator.css";
+import "./Videoform.css";
 
 function AddVideoForm() {
     const [videoInfo, setVideoInfo] = useState({
@@ -7,45 +7,43 @@ function AddVideoForm() {
       url: '',
       description: '',
       videoFile: null,
-      courseId: '' // Add courseId state
+      courseId: ''
     });
-    const [courses, setCourses] = useState([]); // State to store courses
-    
+    const [courses, setCourses] = useState([]);
+
     useEffect(() => {
-      // Fetch courses from the server when the component mounts
+      const fetchCourses = async () => {
+        try {
+          const response = await fetch('http://localhost:5000/api/courses');
+          if (response.ok) {
+            const data = await response.json();
+            setCourses(data);
+          } else {
+            console.error('Failed to fetch courses');
+          }
+        } catch (error) {
+          console.error('Error fetching courses:', error);
+        }
+      };
+
       fetchCourses();
     }, []);
-    
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/courses');
-        if (response.ok) {
-          const data = await response.json();
-          setCourses(data);
-        } else {
-          console.error('Failed to fetch courses');
-        }
-      } catch (error) {
-        console.error('Error fetching courses:', error);
-      }
-    };
 
     const handleChange = (e) => {
       const { name, value, files } = e.target;
-      if (files) {
-        setVideoInfo({ ...videoInfo, videoFile: files[0] });
-      } else {
-        setVideoInfo({ ...videoInfo, [name]: value });
-      }
+      setVideoInfo({
+        ...videoInfo,
+        [name]: files ? files[0] : value
+      });
     };
-  
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       const formData = new FormData();
       formData.append('title', videoInfo.title);
       formData.append('url', videoInfo.url);
       formData.append('description', videoInfo.description);
-      formData.append('courseId', videoInfo.courseId); // Add courseId to form data
+      formData.append('courseId', videoInfo.courseId);
       if (videoInfo.videoFile) {
         formData.append('videoFile', videoInfo.videoFile);
       }

@@ -20,10 +20,8 @@ import ExploreCourses from "./components/StudentDashboard/ExploreCourses.jsx";
 import TakeExam from "./components/StudentDashboard/TakeExam.jsx";
 // import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
 // import { UserProvider } from './src/UserContext.js';
-
-
-
-
+// import AnalyticsPage from "./components/Admin/AnalyticsPage.jsx";
+// import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
 
 
 function App() {
@@ -50,6 +48,9 @@ function App() {
         <Route exact path='/QuizManager' element={<QuizManager />} />  */}
         <Route exact path='/TakeExam' element={<TakeExam />} />
         {/* <Route exact path='/SuperAdmin' element={<SuperAdmin />} /> */}
+        // <Route exact path='/AnalyticsPage' element={<AnalyticsPage />} />
+        // <Route exact path='/SuperAdmin' element={<SuperAdmin />} />
+        
       </Routes>
       <Footer />
       </UserProvider>
