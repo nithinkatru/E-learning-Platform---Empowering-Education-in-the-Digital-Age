@@ -11,15 +11,15 @@ import Footer from "./components/common/footer/Footer.jsx"
 // import Blog from "./components/blog/Blog"
 import CourseHome from "./components/allcourses/CourseHome"
 import Team from "./components/team/Team"
-import Educatordashboard from './components/Educator/Educatordashboard.jsx';
-import Coursespage from './components/Educator/CoursesPage.jsx';
+// import Educatordashboard from './components/Educator/Educatordashboard.jsx';
+// import Coursespage from './components/Educator/CoursesPage.jsx';
 import StudentDashboard from './components/StudentDashboard/StudentWelcome.jsx';
 import ExploreCourses from "./components/StudentDashboard/ExploreCourses.jsx";
-import AnalyticsPage from "./components/Educator/AnalyticsPage.jsx";
-import QuizManager from "./components/Educator/QuizManager.jsx";
+// import AnalyticsPage from "./components/Educator/AnalyticsPage.jsx";
+// import QuizManager from "./components/Educator/QuizManager.jsx";
 import TakeExam from "./components/StudentDashboard/TakeExam.jsx";
-import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
-import { UserProvider } from './src/UserContext.js';
+// import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
+// import { UserProvider } from './src/UserContext.js';
 
 
 
@@ -40,16 +40,16 @@ function App() {
         <Route exact path='/about' element={<About />} />
         <Route exact path='/contact' element={<Contact />} />
         {/* <Route exact path='/journal' element={<Blog />} /> */}
-        <Route exact path='Educatordashboard' element={<Educatordashboard />} />
-        <Route exact path='/coursespage' element={<Coursespage />} />
+        {/* <Route exact path='Educatordashboard' element={<Educatordashboard />} />
+        <Route exact path='/coursespage' element={<Coursespage />} /> */}
         <Route exact path='/StudentDashboard' element={<StudentDashboard />} />
         <Route exact path='/ExploreCourses' element={<ExploreCourses />} />       
         <Route exact path='/courses' element={<CourseHome />} />
         <Route exact path='/team' element={<Team />} />
-        <Route exact path='/AnalyticsPage' element={<AnalyticsPage />} />
-        <Route exact path='/QuizManager' element={<QuizManager />} /> 
+        {/* <Route exact path='/AnalyticsPage' element={<AnalyticsPage />} />
+        <Route exact path='/QuizManager' element={<QuizManager />} />  */}
         <Route exact path='/TakeExam' element={<TakeExam />} />
-        <Route exact path='/SuperAdmin' element={<SuperAdmin />} />
+        {/* <Route exact path='/SuperAdmin' element={<SuperAdmin />} /> */}
       </Routes>
       <Footer />
       </UserProvider>
