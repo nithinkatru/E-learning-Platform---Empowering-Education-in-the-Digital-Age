@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './ExploreCourses.css'; // Make sure to include styles for full view
+import './ExploreCourses.css';
+import Back from "../common/back/Back"
+
 
 function ExploreCourses() {
   const [videos, setVideos] = useState([]);
@@ -47,42 +49,47 @@ function ExploreCourses() {
   );
 
   return (
-    <div className="explore-courses-layout">
-      <aside className="sidebar">
-        <h3>Courses</h3>
-        <select onChange={(e) => setSelectedCourse(e.target.value)} value={selectedCourse}>
-          {courses.map(course => (
-            <option key={course._id} value={course._id}>{course.title}</option>
-          ))}
-        </select>
-      </aside>
-      <div className="videos-container">
-        {selectedVideo ? (
-          renderSelectedVideo()
-        ) : (
-          filteredVideos.length > 0 ? (
-            filteredVideos.map(video => (
-              <div key={video._id} className="video-preview"
-                  onClick={() => handleVideoSelect(video)}>
-                <video
-                  ref={el => videoElementsRef.current[video._id] = el}
-                  src={`http://localhost:5000/${video.videoFile.replace('\\', '/')}`}
-                  muted
-                  loop
-                  style={{ width: '100%', height: '100%' }}
-                />
-                <div className="video-info">
-                  <h3>{video.title}</h3>
-                  <p>{video.description}</p>
-                </div>
-              </div>
-            ))
+    <>
+  
+      
+  <Back title='Explore Courses' />
+      {/* Main Content */}
+      <div className="explore-courses-layout">
+        <aside className="sidebar">
+          <h3>Courses</h3>
+          <select onChange={(e) => setSelectedCourse(e.target.value)} value={selectedCourse}>
+            {courses.map(course => (
+              <option key={course._id} value={course._id}>{course.title}</option>
+            ))}
+          </select>
+        </aside>
+        <div className="videos-container">
+          {selectedVideo ? (
+            renderSelectedVideo()
           ) : (
-            <p>No videos available for this course.</p>
-          )
-        )}
+            filteredVideos.length > 0 ? (
+              filteredVideos.map(video => (
+                <div key={video._id} className="video-preview" onClick={() => handleVideoSelect(video)}>
+                  <video
+                    ref={el => videoElementsRef.current[video._id] = el}
+                    src={`http://localhost:5000/${video.videoFile.replace('\\', '/')}`}
+                    muted
+                    loop
+                    style={{ width: '100%', height: '100%' }}
+                  />
+                  <div className="video-info">
+                    <h3>{video.title}</h3>
+                    <p>{video.description}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No videos available for this course.</p>
+            )
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

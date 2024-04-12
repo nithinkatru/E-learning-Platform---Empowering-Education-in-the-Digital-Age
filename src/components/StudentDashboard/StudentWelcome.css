@@ -1,38 +1,34 @@
-.student-hero {
-  background-image: url("../../../public/images/back.webp"); /* Adjust the path as needed */
-  background-size: cover;
-  background-attachment: fixed;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+/* Assuming you have similar base styles for body, buttons, etc., as in Educator.css */
+
+.admin-dashboard-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  /* Apply any additional main content styles */
+}
+
+.sidebar {
+  flex-basis: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-btn {
+  background-color: #009688;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
   width: 100%;
-  height: 100vh;
-  padding-top: 20%;
-  padding-right: 50px;
-  color: #fff;
-}
-
-.student-hero #heading h3 {
-  color: #fff;
-}
-
-.student-hero #heading {
   text-align: left;
-  margin: 0;
-  padding: 0;
+  border: none;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-  .margin {
-    height: 40vh;
-  }
-  .student-hero {
-    background-position: right;
-    padding-top: 50%;
-    height: 80vh;
-  }
-  .student-hero .row {
-    width: 100%;
-  }
+.sidebar-btn:hover {
+  background-color: #00796B;
 }
