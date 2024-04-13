@@ -1,0 +1,49 @@
+/* IQGame.css */
+
+.iq-game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .iq-game-container h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .iq-game-container h3 {
+    color: #555;
+  }
+  
+  .iq-game-container p {
+    margin-bottom: 10px;
+  }
+  
+  .iq-game-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .iq-game-container li {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .iq-game-container li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .iq-game-container p.score {
+    text-align: right;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  

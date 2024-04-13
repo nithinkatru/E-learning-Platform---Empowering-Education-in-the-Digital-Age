@@ -1,41 +1,53 @@
-// StudentWelcome.jsx
-import React from 'react';
-import Sidebar from './Sidebar'; // Ensure this is the correct path to your Sidebar component
+import React, { useState } from 'react';
+import Sidebar from './Sidebar'; // Assuming this is your Sidebar component
 import Heading from '../common/heading/Heading';
-import './StudentWelcome.css'; // Ensure this CSS file exists and styles are correctly defined
-import NoticeBoard from '../StudentDashboard/NoticeBoard';
-import FeaturedCourses from './FeaturedCourses';
-import ExploreCourses from './ExploreCourses';
-import StudentViewGrades from './StudentViewGrades';
-import TakeExam from './TakeExam';
-// Define the sidebar items for the student dashboard
+import NoticeBoard from '../Superadmin/NoticeBoard';
+import IQGame from './IQGame'; // Import the IQGame component
+import './StudentWelcome.css'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faBookOpen, faClipboard, faListAlt, faGamepad } from '@fortawesome/free-solid-svg-icons';
+
 const sidebarItems = [
-  { label: 'ExploreCourses', path: '/ExploreCourses' }, // Adjust paths as needed
-  { label: 'StudentViewGrades', path: '/StudentViewGrades' },
-  { label: 'TakeExam', path: '/TakeExam' },
-  // Add more sidebar items as needed
+  { label: 'ExploreCourses', icon: <FontAwesomeIcon icon={faBookOpen} />, path: '/ExploreCourses' },
+  { label: 'StudentViewGrades', icon: <FontAwesomeIcon icon={faClipboard} />, path: '/StudentViewGrades' },
+  { label: 'TakeExam', icon: <FontAwesomeIcon icon={faListAlt} />, path: '/TakeExam' },
+  { label: 'NoticeBoard', icon: <FontAwesomeIcon icon={faBell} />, path: '/NoticeBoard' },
+  { label: 'IQGame', icon: <FontAwesomeIcon icon={faGamepad} />, path: '/IQGame' },
 ];
 
-const StudentWelcome = () => {
+function StudentDashboard() {
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleSidebarItemClick = (path, event) => {
+    event.preventDefault(); // Prevent the default link behavior
+    setSelectedItem(path);
+  };
+
   return (
-    <div className="admin-dashboard-container">
-      <Sidebar items={sidebarItems} />
-      <div className="main-content">
-        <section className='student-hero'>
-          <div className='container'>
-            <Heading subtitle="STUDENT PORTAL" title="Unlock Your Learning Potential" />
-            <p>Welcome to your learning dashboard. Dive into your courses or explore new learning paths.</p>
+    <>
+      <section className='hero'>
+        <div className='container'>
+          <div className='row'>
+            <Heading subtitle='WELCOME TO NEXTSKILL' title='Best Online Education Expertise' />
+            <p>Far far away, behind the word mountains...</p>
           </div>
-        </section>
-        <NoticeBoard />
-        <FeaturedCourses />
-        
-        
-
-        {/* You might want to include <ExploreCourses /> and <StudentViewGrades /> here or handle them through routing */}
+          <button className='primary-btn'>SIGN IN <i className='fa fa-long-arrow-alt-right'></i></button>
+          <button className='primary-btn'>SIGN IN <i className='fa fa-long-arrow-alt-right'></i></button>
+        </div>
+      </section>
+      <div className="admin-dashboard-container">
+        <Sidebar items={sidebarItems} onItemClick={(item) => handleSidebarItemClick(item.path)} />
+        <div className="main-content">
+          <h2>Student Dashboard</h2>
+          <div className="notice-sidebar" style={{ width: '70em' }}>
+            <NoticeBoard />
+          </div>
+          {/* Render other components based on the selected section */}
+          {selectedItem === '/IQGame' && <IQGame />}
+        </div>
       </div>
-    </div>
+    </>
   );
-};
+}
 
-export default StudentWelcome;
+export default StudentDashboard;

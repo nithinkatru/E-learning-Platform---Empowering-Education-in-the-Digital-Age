@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 import './NoticeBoard.css';
 
-// Pass a prop to define the audience for this NoticeBoard instance
-// For example, for the student dashboard, you might pass audience="student" when using this component
 function NoticeBoard({ audience }) {
   const [notices, setNotices] = useState([]);
 
@@ -30,7 +30,7 @@ function NoticeBoard({ audience }) {
 
   return (
     <div className="notice-board">
-      <h2>Notices</h2>
+      <h2><FontAwesomeIcon icon={faBell} /> Notices</h2>
       {notices.length > 0 ? (
         <ul>
           {notices.map((notice, index) => (

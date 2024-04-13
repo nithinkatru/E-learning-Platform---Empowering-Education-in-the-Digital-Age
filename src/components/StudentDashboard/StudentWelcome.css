@@ -1,34 +1,109 @@
-/* Assuming you have similar base styles for body, buttons, etc., as in Educator.css */
+/* StudentDashboard.css */
 
-.admin-dashboard-container {
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.row {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  /* Apply any additional main content styles */
+/* Hero section */
+.hero {
+  background-color: #007bff;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
 }
 
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* Sidebar */
 .sidebar {
-  flex-basis: 200px;
-  background-color: #f4f4f4;
+  flex: 0 0 250px;
+  background-color: #fff;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar-btn {
-  background-color: #009688;
-  color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  cursor: pointer;
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.sidebar-btn:hover {
-  background-color: #00796B;
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Notice board */
+.notice-board {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.notice-board h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.notice-board ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notice-board li {
+  margin-bottom: 10px;
+}
+
+.notice-board a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.notice-board a:hover {
+  text-decoration: underline;
 }
