@@ -9,9 +9,11 @@ import QuizManager from '../Educator/QuizManager';
 import AdminEducatorCRUD from '../Superadmin/AdminEducatorCRUD';
 import NoticeBoard from'./NoticeBoard';
 import axios from 'axios'; 
-import './AdminEducatorCRUD.css' 
+import './AdminEducatorCRUD.css'; 
 
-
+// Import Font Awesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faVideo, faChalkboardTeacher, faChartBar, faTasks, faPencilAlt, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 
 function SuperAdminDashboard() {
     console.log('SuperAdminDashboard component rendering');
@@ -21,6 +23,7 @@ function SuperAdminDashboard() {
     const [targetAudience, setTargetAudience] = useState('');
     const [notice, setNotice] = useState('');
     const [educators, setEducators] = useState([]);
+    const [showNoticeForm, setShowNoticeForm] = useState(false); // State variable to toggle display of notice form
 
     useEffect(() => {
         if (showSection === 'viewEducators') {
@@ -28,7 +31,7 @@ function SuperAdminDashboard() {
         }
       }, [showSection]);
     
-      const fetchEducators = async () => {
+    const fetchEducators = async () => {
         try {
           const response = await axios.get('http://localhost:5000/api/educators');
           setEducators(response.data);
@@ -37,7 +40,6 @@ function SuperAdminDashboard() {
         }
       };
     
-     
     console.log('State variables set', { videoInfo, courseInfo, showSection });
 
     const handleCourseChange = (name, value) => {
@@ -50,7 +52,7 @@ function SuperAdminDashboard() {
             };
         });
     };
-    // Add targetAudience state
+    
     const handleNoticeChange = (e) => {
         const { name, value } = e.target;
         if (name === 'notice') {
@@ -60,13 +62,14 @@ function SuperAdminDashboard() {
         }
       };
   
-      const handleNoticeSubmit = async (e) => {
+    const handleNoticeSubmit = async (e) => {
         e.preventDefault();
         try {
           await axios.post('http://localhost:5000/api/notices', { message: notice, targetAudience });
           alert('Notice posted successfully');
           setNotice(''); // Reset form
           setTargetAudience(''); // Reset selector
+          setShowNoticeForm(false); // Hide notice form after submission
         } catch (error) {
           alert('Failed to post notice');
           console.error('Error posting notice:', error);
@@ -82,20 +85,34 @@ function SuperAdminDashboard() {
         console.log('renderSidebar called');
         return (
             <div className="sidebar">
-                <button className="sidebar-btn" onClick={() => setShowSection('addCourse')}>Add Course</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('addVideo')}>Add Video</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('viewCourses')}>View Courses</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('viewAnalytics')}>View Analytics</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>Manage Assignments</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('manageQuizzes')}>Manage Quizzes</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('AdminEducatorCRUD')}>AdminEducatorCRUD</button>
-              
-               
+                <button className="sidebar-btn" onClick={() => setShowSection('addCourse')}>
+                    <FontAwesomeIcon icon={faPlus} /> Add Course
+                </button>
+                <button className="sidebar-btn" onClick={() => setShowSection('addVideo')}>
+                    <FontAwesomeIcon icon={faVideo} /> Add Video
+                </button>
+                <button className="sidebar-btn" onClick={() => setShowSection('viewCourses')}>
+                    <FontAwesomeIcon icon={faChalkboardTeacher} /> View Courses
+                </button>
+                <button className="sidebar-btn" onClick={() => setShowSection('viewAnalytics')}>
+                    <FontAwesomeIcon icon={faChartBar} /> View Analytics
+                </button>
+                <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>
+                    <FontAwesomeIcon icon={faTasks} /> Manage Assignments
+                </button>
+                <button className="sidebar-btn" onClick={() => setShowSection('QuizManager')}>
+                    <FontAwesomeIcon icon={faPencilAlt} /> Manage Quizzes
+                </button>
+                <button className="sidebar-btn" onClick={() => setShowSection('AdminEducatorCRUD')}>
+                    <FontAwesomeIcon icon={faPencilAlt} /> AdminEducatorCRUD
+                </button>
+                <button className="sidebar-btn" onClick={() => setShowNoticeForm(!showNoticeForm)}>
+                    <FontAwesomeIcon icon={faBullhorn} /> Add Notice
+                </button>
             </div>
         );
     };
 
-   
     const handleCourseSave = async (event) => {
         console.log('handleCourseSave called', courseInfo);
         event.preventDefault();
@@ -111,8 +128,8 @@ function SuperAdminDashboard() {
 
             const data = await response.json();
             console.log('Course saved:', data);
-            setCourseInfo({ _id: null, title: '', description: '', url: '' }); // Reset form
-            setShowSection(''); // Optionally clear or change the section after saving
+            setCourseInfo({ _id: null, title: '', description: '', url: '' }); 
+            setShowSection(''); 
         } catch (error) {
             console.error('Error saving course:', error);
         }
@@ -142,14 +159,36 @@ function SuperAdminDashboard() {
                 return <AdminEducatorCRUD />;
             case 'NoticeBoard':
                 return <NoticeBoard />;
+            case 'manage quiz':
+                return <QuizManager />;
             default:
                 console.log('Default section rendering');
                 return null; // Or any default view
         }
-
-        
     };
-    
+
+    const renderNoticeForm = () => {
+        if (showNoticeForm) {
+            return (
+                <form onSubmit={handleNoticeSubmit} style={{ marginTop: '20px' }}>
+                    <h3>Post a New Notice</h3>
+                    <textarea 
+                        name="notice"
+                        value={notice} 
+                        onChange={handleNoticeChange} 
+                        placeholder="Enter notice here..." 
+                    />
+                    <select name="targetAudience" value={targetAudience} onChange={handleNoticeChange} required>
+                        <option value="">Select Audience</option>
+                        <option value="educator">Educator</option>
+                        <option value="student">Student</option>
+                        <option value="all">All</option>
+                    </select>
+                    <button type="submit">Post Notice</button>
+                </form>
+            );
+        }
+    };
 
     return (
         <>
@@ -171,25 +210,9 @@ function SuperAdminDashboard() {
                 {renderSidebar()}
                 <div className="main-content">
                     <h2>Admin Dashboard</h2>
-                    {/* Render forms or pages based on the selected section */}
-                    {renderSection()} {/* Render the section */}
+                    {renderSection()} 
+                    {renderNoticeForm()} 
                 </div>
-                <form onSubmit={handleNoticeSubmit} style={{ marginTop: '20px' }}>
-                  <h3>Post a New Notice</h3>
-                  <textarea 
-                      name="notice"
-                      value={notice} 
-                      onChange={handleNoticeChange} 
-                      placeholder="Enter notice here..." 
-                  />
-                  <select name="targetAudience" value={targetAudience} onChange={handleNoticeChange} required>
-                    <option value="">Select Audience</option>
-                    <option value="educator">Educator</option>
-                    <option value="student">Student</option>
-                    <option value="all">All</option>
-                  </select>
-                  <button type="submit">Post Notice</button>
-                </form>
             </div>
         </>
     );

@@ -21,6 +21,13 @@ import TakeExam from "./components/StudentDashboard/TakeExam.jsx";
 import SuperAdmin from "./components/Superadmin/Superadmin.jsx";
 import { UserProvider } from './src/UserContext.js';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBell, faBookOpen, faClipboard, faListAlt, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faBell, faBookOpen, faClipboard, faListAlt, faGamepad);
+
+
 
 
 

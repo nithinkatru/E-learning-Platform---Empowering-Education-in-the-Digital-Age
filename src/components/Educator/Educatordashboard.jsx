@@ -9,6 +9,8 @@ import QuizManager from './QuizManager'; // Assuming this is your form for addin
 import { Link } from 'react-router-dom';
 import NoticeBoard from'../Superadmin/NoticeBoard';
 import EducatorReleaseGrades from './EducatorReleaseGrades';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle, faVideo, faBookOpen, faChartLine, faTasks, faEdit, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 function AdminDashboard() {
     const [videoInfo, setVideoInfo] = useState({ title: '', url: '', description: '', videoFile: null });
@@ -25,15 +27,28 @@ function AdminDashboard() {
     const renderSidebar = () => {
         return (
             <div className="sidebar">
-                <button className="sidebar-btn" onClick={() => setShowSection('addCourse')}>Add Course</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('addVideo')}>Add Video</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('viewCourses')}>View Courses</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('viewAnalytics')}>View Analytics</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>Manage Assignments</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('manageQuizzes')}>Manage Quizzes</button>
-                <button className="sidebar-btn" onClick={() => setShowSection('EducatorReleaseGrades')}>EducatorReleaseGrades</button>
-
-            </div>
+            <button className="sidebar-btn" onClick={() => setShowSection('addCourse')}>
+                <FontAwesomeIcon icon={faPlusCircle} /> Add Course
+            </button>
+            <button className="sidebar-btn" onClick={() => setShowSection('addVideo')}>
+                <FontAwesomeIcon icon={faVideo} /> Add Video
+            </button>
+            <button className="sidebar-btn" onClick={() => setShowSection('viewCourses')}>
+                <FontAwesomeIcon icon={faBookOpen} /> View Courses
+            </button>
+            <button className="sidebar-btn" onClick={() => setShowSection('viewAnalytics')}>
+                <FontAwesomeIcon icon={faChartLine} /> View Analytics
+            </button>
+            <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>
+                <FontAwesomeIcon icon={faTasks} /> Manage Assignments
+            </button>
+            <button className="sidebar-btn" onClick={() => setShowSection('manageQuizzes')}>
+                <FontAwesomeIcon icon={faEdit} /> Manage Quizzes
+            </button>
+            <button className="sidebar-btn" onClick={() => setShowSection('EducatorReleaseGrades')}>
+                <FontAwesomeIcon icon={faGraduationCap} /> Release Grades
+            </button>
+        </div>
         );
     };
 
