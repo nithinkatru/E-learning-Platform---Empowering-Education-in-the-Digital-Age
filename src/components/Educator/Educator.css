@@ -7,7 +7,7 @@ body {
 
 .admin-dashboard {
   padding: 20px;
-  padding-top:40%;
+  padding-top: 20px; /* Reduced from 40% to a fixed value that doesn't push content down too far */
   color: #1eb2a6;
 }
 
@@ -32,9 +32,11 @@ body {
 .hero {
   background-color: #1eb2a6;
   color: #fff;
-  padding: 20px;
+  padding: 14px; /* Adjusted from 20px to approximately 30% less for top and bottom */
   margin-bottom: 20px;
+  padding-top: 20px;
 }
+
 
 .container {
   max-width: 1200px;
@@ -62,8 +64,7 @@ body {
   outline: none;
 }
 
-/* Add more custom styles as needed */
-/* CourseForm Styles within Educator.css */
+
 
 /* Base styling for form */
 form {
@@ -174,4 +175,101 @@ form input[type="submit"]:disabled {
 
 .course-actions button.delete-btn:hover {
   background-color: #cc3700 !important;
+}
+
+.admin-dashboard {
+  display: flex;
+}
+
+.sidebar {
+  flex-basis: 200px; /* adjust width as necessary */
+  flex-shrink: 0;
+  height: 100vh;
+  background-color: #f4f4f4; /* Sidebar background color */
+  padding: 20px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.1); /* Optional: adds shadow to the sidebar */
+}
+
+.sidebar-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px; /* Space between buttons */
+  background-color: #009688; /* Button background color */
+  color: white;
+  text-align: left;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar-btn:hover {
+  background-color: #00796B; /* Button hover state */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  /* Add any additional styling you need for your main content */
+}
+
+/* Continue with other styles as before */
+.primary-btn {
+  background-color: #149683 !important;
+  color: #fff; /* Text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Add pointer cursor */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  width:20% !important;
+}
+
+.primary-btn:hover {
+  background-color: #11706e !important; /* Darker shade on hover */
+}
+.admin-dashboard-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-dashboard {
+  flex: 1;
+}
+
+.notice-sidebar {
+  width: 300vh !important; /* Adjust width as needed */
+  margin-left: 20px; /* Adds spacing between main content and sidebar */
+  /* Additional styling for the sidebar */
+  padding: 20px;
+  background-color: #f4f4f4; /* Light background for the sidebar */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional shadow for depth */
+  height: auto; /* Adjust based on content or set to a fixed height */
+}
+.admin-dashboard {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap as needed */
+  justify-content: space-between; /* Space between main content and sidebar */
+}
+
+.main-content, .notice-sidebar {
+  flex: 1; /* Both take equal space initially */
+}
+
+.notice-sidebar {
+  max-width: 300px; /* Set a max width for the sidebar */
+  margin-left: auto; /* Push the sidebar to the right */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content, .notice-sidebar {
+    flex-basis: 100%; /* Each takes full width on smaller screens */
+    max-width: 100%; /* Ensures no overflow */
+    margin: 0; /* Reset margins */
+  }
+  .notice-sidebar {
+    margin-top: 20px; /* Add some space above the sidebar when stacked */
+  }
 }

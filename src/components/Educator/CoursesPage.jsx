@@ -87,18 +87,43 @@ function CoursesPage() {
   };
   
   return (
-    <div>
-      <h2>Courses</h2>
-      <CourseForm course={course} onSave={handleSave} onChange={handleChange} saving={saving} />
-      {courses.map((course, index) => (
-        <div key={index}>
-          <span>{course.title}</span>
-          <button onClick={() => handleEdit(course)}>Edit</button>
-          <button onClick={() => handleDelete(course._id)}>Delete</button> 
-        </div>
-      ))}
+    <div className="courses-container">
+      <div className="course-form-container">
+        <h2>Add or Edit Course</h2>
+        <CourseForm 
+          course={course} 
+          onSave={handleSave} 
+          onChange={handleChange} 
+          saving={saving} 
+        />
+      </div>
+      <div className="courses-list-container">
+        <h2>Courses</h2>
+        <table className="courses-table">
+          <thead>
+            <tr>
+              <th>Course Title</th>
+              <th>Description</th>
+              <th>URL</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {courses.map((course, index) => (
+              <tr key={index}>
+                <td className="course-title">{course.title}</td>
+                <td className="course-description">{course.description}</td>
+                <td>{course.url}</td>
+                <td className="course-action-buttons">
+                  <button className="edit-button" onClick={() => handleEdit(course)}>Edit</button>
+                  <button className="delete-button" onClick={() => handleDelete(course._id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
-
 export default CoursesPage;
