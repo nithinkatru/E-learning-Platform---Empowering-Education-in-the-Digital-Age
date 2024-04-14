@@ -16,16 +16,15 @@ const Hero = () => {
             <div className='button'>
               
               <button className='primary-btn'>
-              SIGN IN&nbsp;<i className='fa fa-long-arrow-alt-right'></i>
+              Get Started
+                &nbsp;<i className='fa fa-long-arrow-alt-right'></i>
             </button> 
             <button className='primary-btn' >
-              LOGIN&nbsp;<i className='fa fa-long-arrow-alt-right'></i>
+            Resume Course &nbsp;<i className='fa fa-long-arrow-alt-right'></i>
             </button>
-
             </div>
           </div>
         </div>
-
       </div>
 
      

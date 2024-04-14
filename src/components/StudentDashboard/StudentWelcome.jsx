@@ -1,26 +1,45 @@
 import React, { useState } from 'react';
-import Sidebar from './Sidebar'; // Assuming this is your Sidebar component
 import Heading from '../common/heading/Heading';
 import NoticeBoard from '../Superadmin/NoticeBoard';
-import IQGame from './IQGame'; // Import the IQGame component
-import './StudentWelcome.css'; 
+import IQGame from './IQGame';
+import FeaturedCourses from './FeaturedCourses';
+import TakeExam from './TakeExam';
+import ExploreCourses from './ExploreCourses';
+import StudentViewGrades from './StudentViewGrades';
+import './StudentWelcome.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faBookOpen, faClipboard, faListAlt, faGamepad } from '@fortawesome/free-solid-svg-icons';
-
-const sidebarItems = [
-  { label: 'ExploreCourses', icon: <FontAwesomeIcon icon={faBookOpen} />, path: '/ExploreCourses' },
-  { label: 'StudentViewGrades', icon: <FontAwesomeIcon icon={faClipboard} />, path: '/StudentViewGrades' },
-  { label: 'TakeExam', icon: <FontAwesomeIcon icon={faListAlt} />, path: '/TakeExam' },
-  { label: 'NoticeBoard', icon: <FontAwesomeIcon icon={faBell} />, path: '/NoticeBoard' },
-  { label: 'IQGame', icon: <FontAwesomeIcon icon={faGamepad} />, path: '/IQGame' },
-];
+import { faBell, faBookOpen, faClipboard, faListAlt, faGamepad, faPlusCircle, faVideo, faChartLine, faTasks, faEdit, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 function StudentDashboard() {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState('');
 
-  const handleSidebarItemClick = (path, event) => {
-    event.preventDefault(); // Prevent the default link behavior
-    setSelectedItem(path);
+  const handleSidebarItemClick = (section) => {
+    setSelectedItem(section);
+  };
+
+  const renderSidebar = () => {
+    return (
+      <div className="sidebar">
+        <button className="sidebar-btn" onClick={() => handleSidebarItemClick('FeaturedCourses')}>
+          <FontAwesomeIcon icon={faBookOpen} /> Featured Courses
+        </button>
+        <button className="sidebar-btn" onClick={() => handleSidebarItemClick('ExploreCourses')}>
+          <FontAwesomeIcon icon={faBookOpen} /> Explore Courses
+        </button>
+        <button className="sidebar-btn" onClick={() => handleSidebarItemClick('StudentViewGrades')}>
+          <FontAwesomeIcon icon={faClipboard} /> View Grades
+        </button>
+        <button className="sidebar-btn" onClick={() => handleSidebarItemClick('TakeExam')}>
+          <FontAwesomeIcon icon={faListAlt} /> Take Exam
+        </button>
+        <button className="sidebar-btn" onClick={() => handleSidebarItemClick('NoticeBoard')}>
+          <FontAwesomeIcon icon={faBell} /> Notice Board
+        </button>
+        <button className="sidebar-btn" onClick={() => handleSidebarItemClick('IQGame')}>
+          <FontAwesomeIcon icon={faGamepad} /> IQ Game
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -36,14 +55,15 @@ function StudentDashboard() {
         </div>
       </section>
       <div className="admin-dashboard-container">
-        <Sidebar items={sidebarItems} onItemClick={(item) => handleSidebarItemClick(item.path)} />
+        {renderSidebar()}
         <div className="main-content">
-          <h2>Student Dashboard</h2>
-          <div className="notice-sidebar" style={{ width: '70em' }}>
-            <NoticeBoard />
-          </div>
-          {/* Render other components based on the selected section */}
-          {selectedItem === '/IQGame' && <IQGame />}
+         
+          {selectedItem === 'FeaturedCourses' && <FeaturedCourses />}
+          {selectedItem === 'ExploreCourses' && <ExploreCourses />}
+          {selectedItem === 'StudentViewGrades' && <StudentViewGrades />}
+          {selectedItem === 'TakeExam' && <TakeExam />}
+          {selectedItem === 'NoticeBoard' && <NoticeBoard />}
+          {selectedItem === 'IQGame' && <IQGame />}
         </div>
       </div>
     </>

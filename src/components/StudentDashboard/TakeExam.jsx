@@ -8,12 +8,7 @@ function TakeExam() {
     const [quizzes, setQuizzes] = useState([]);
     const [currentQuiz, setCurrentQuiz] = useState(null);
     const [answers, setAnswers] = useState({});
-    const sidebarItems = [
-        { label: 'ExploreCourses', path: '/ExploreCourses' }, // Adjust paths as needed
-        { label: 'StudentViewGrades', path: '/StudentViewGrades' },
-        { label: 'TakeExam', path: '/TakeExam' },
-        // Add more sidebar items as needed
-      ];
+   
       
     useEffect(() => {
         axios.get('http://localhost:5000/api/quizzes')
@@ -39,25 +34,29 @@ function TakeExam() {
             alert('Please complete the quiz before submitting.');
             return;
         }
-
+    
+        const formattedAnswers = currentQuiz.questions.map(question => ({
+            questionId: question._id,
+            answer: answers[question._id]  // Assuming `answers` state stores answers keyed by question ID
+        }));
+    
         axios.post('http://localhost:5000/api/submit-quiz', {
             quizId: currentQuiz._id,
-            answers
+            answers: formattedAnswers
         })
         .then(response => {
             console.log('Answers submitted:', response.data);
-            // Reset the quiz after successful submission
             setCurrentQuiz(null);
             setAnswers({});
             alert('Quiz submitted successfully.');
         })
         .catch(error => console.error('Submission error:', error));
     };
-
+    
     return (
         <>
             <Back title='Take Exam' />
-            <Sidebar items={sidebarItems} />
+            
             <div className="TakeExam-container">
                 <h1>Take Exam</h1>
                 {currentQuiz === null ? (

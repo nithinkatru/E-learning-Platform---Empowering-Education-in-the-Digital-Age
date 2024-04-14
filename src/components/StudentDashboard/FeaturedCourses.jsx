@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './FeaturedCourses.css'; // Ensure this path is correct for your CSS
 
-// Assuming Bootstrap is correctly included in your project
 function FeaturedCourses() {
     const [courses, setCourses] = useState([]);
 
@@ -25,15 +24,19 @@ function FeaturedCourses() {
 
     return (
         <div className="d-flex">
-            
             <div className="main-content flex-grow-1 p-3">
                 <h2>Featured Courses</h2>
                 <div className="courses-container d-flex flex-wrap">
                     {courses.map(course => (
                         <div key={course._id} className="course-card m-2 p-3 border">
-                            <h3>{course.title}</h3>
-                            <p>{course.description}</p>
-                            <a href={course.url} target="_blank" rel="noopener noreferrer">Learn More</a>
+                            <img src={`https://picsum.photos/seed/${course._id}/300/200`} alt="Course" />
+                            <div className="course-info">
+                                <div className="course-title">{course.title}</div>
+                                <div className="course-details">
+                                    <p>{course.description}</p>
+                                    <a href={course.url} target="_blank" rel="noopener noreferrer">Learn More</a>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../src/UserContext'; // Adjust the import path as needed
+import Back from "../components/common/back/Back";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,6 +45,8 @@ const handleSubmit = async (e) => {
   };
 
   return (
+    <>
+    <Back title='Login ' />
     <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label>Email:</label>
@@ -70,6 +73,7 @@ const handleSubmit = async (e) => {
       {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
       <button type="submit" className="btn btn-primary">Login</button>
     </form>
+    </>
   );
 };
 

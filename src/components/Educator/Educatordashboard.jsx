@@ -6,10 +6,12 @@ import CoursesPage from './CoursesPage';
 import AnalyticsPage from './AnalyticsPage';
 import CourseForm from './CourseForm';
 import QuizManager from './QuizManager'; // Assuming this is your form for adding/editing courses
-import { Link } from 'react-router-dom';
 import NoticeBoard from'../Superadmin/NoticeBoard';
 import EducatorReleaseGrades from './EducatorReleaseGrades';
+import EducatorNoticeBoard from './EducatorNoticeBoard';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faPlusCircle, faVideo, faBookOpen, faChartLine, faTasks, faEdit, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 function AdminDashboard() {
@@ -42,11 +44,14 @@ function AdminDashboard() {
             <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>
                 <FontAwesomeIcon icon={faTasks} /> Manage Assignments
             </button>
-            <button className="sidebar-btn" onClick={() => setShowSection('manageQuizzes')}>
+            <button className="sidebar-btn" onClick={() => setShowSection('QuizManager')}>
                 <FontAwesomeIcon icon={faEdit} /> Manage Quizzes
-            </button>
+            </button> 
             <button className="sidebar-btn" onClick={() => setShowSection('EducatorReleaseGrades')}>
-                <FontAwesomeIcon icon={faGraduationCap} /> Release Grades
+                <FontAwesomeIcon icon={faGraduationCap} /> EducatorReleaseGrades
+            </button>
+            <button className="sidebar-btn" onClick={() => setShowSection('EducatorNoticeBoard')}>
+                <FontAwesomeIcon icon={faGraduationCap} /> EducatorNoticeBoard
             </button>
         </div>
         );
@@ -84,10 +89,10 @@ function AdminDashboard() {
                     </div>
 
                     <button className='primary-btn'>
-                SIGN IN <i className='fa fa-long-arrow-alt-right'></i>
+                START  NOW <i className='fa fa-long-arrow-alt-right'></i>
               </button>
               <button className='primary-btn'>
-                SIGN IN <i className='fa fa-long-arrow-alt-right'></i>
+                VIEW COURSES <i className='fa fa-long-arrow-alt-right'></i>
               </button>
               
                     
@@ -99,8 +104,8 @@ function AdminDashboard() {
                 {renderSidebar()}
                 <div className="main-content">
                     <h2>Educator Dashboard</h2>
-                    <div className="notice-sidebar" style={{ width: '70em' }}>
-                    <NoticeBoard />
+                    <div  style={{ width: '70em' }}>
+                  
                 </div>
                     {/* Render forms or pages based on the selected section */}
                     {showSection === 'addVideo' && <AddVideoForm videoInfo={videoInfo} />}
@@ -116,6 +121,8 @@ function AdminDashboard() {
                     {showSection === 'viewAnalytics' && <AnalyticsPage />}
                     {showSection === 'QuizManager' && <QuizManager />}
                     {showSection === 'EducatorReleaseGrades' && <EducatorReleaseGrades />}
+                    {showSection === 'EducatorNoticeBoard' && <EducatorNoticeBoard />}
+                   
                     
                 </div>
             </div>
