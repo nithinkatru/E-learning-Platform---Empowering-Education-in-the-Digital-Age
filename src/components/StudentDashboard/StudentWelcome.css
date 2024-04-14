@@ -107,3 +107,11 @@ body {
 .notice-board a:hover {
   text-decoration: underline;
 }
+
+.hero {
+  background-color: #1eb2a6;
+  color: #fff;
+  padding: 14px; /* Adjusted from 20px to approximately 30% less for top and bottom */
+  margin-bottom: 20px;
+  padding-top: 20em;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom';
-import HomePage from './components/home/Hero/hero.jsx'// Adjust the import path as necessary
+import HomePage from './components/home/Hero/hero.jsx';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup';
 import Header from "./components/common/header/Header"
@@ -46,7 +46,6 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route exact path='/about' element={<About />} />
         <Route exact path='/contact' element={<Contact />} />
-        {/* <Route exact path='/journal' element={<Blog />} /> */}
         <Route exact path='Educatordashboard' element={<Educatordashboard />} />
         <Route exact path='/coursespage' element={<Coursespage />} />
         <Route exact path='/StudentDashboard' element={<StudentDashboard />} />

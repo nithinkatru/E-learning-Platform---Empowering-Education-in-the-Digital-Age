@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("../../../../public/images/bg.webp");
+  background-image: url("../../../../public/images/bg.jpg");
   background-size: cover;
   background-attachment: fixed;
   position: absolute;
@@ -78,3 +78,16 @@
 .btn.custom-button-icon:hover {
   background-color: #45a049 !important;
 }
+
+.button-container {
+  position: absolute; /* Position the buttons absolutely within the hero */
+  bottom: 10px; /* Distance from the bottom of the hero section */
+  left: 10px; /* Distance from the left side of the hero section */
+}
+
+.button {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+}
+

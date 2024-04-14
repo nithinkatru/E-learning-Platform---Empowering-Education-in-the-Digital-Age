@@ -273,3 +273,15 @@ form input[type="submit"]:disabled {
     margin-top: 20px; /* Add some space above the sidebar when stacked */
   }
 }
+
+
+.primary-btn {
+  bottom: 10px; 
+  left: 10px; 
+}
+
+.primary-btn {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+}
