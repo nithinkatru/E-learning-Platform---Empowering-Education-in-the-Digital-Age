@@ -20,16 +20,54 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
+  // Email validation function
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+}
+
+// Phone number validation function
+function validatePhoneNumber(phoneNumber) {
+  const re = /^\d{10}$/; // Simple validation for US phone numbers
+  return re.test(String(phoneNumber));
+}
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // Check required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password || !formData.confirmPassword) {
+      setError('Please fill in all fields.');
+      return;
+    }
+  
+    // Email validation
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+  
+    // Password validation
+    if (formData.password.length < 8) {
+      setError('Password must be at least 8 characters.');
+      return;
+    }
+  
+    // Check if passwords match
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
+  
+    // Optional: Validate phone number (basic format check)
+    if (formData.phoneNumber && !validatePhoneNumber(formData.phoneNumber)) {
+      setError('Invalid phone number format.');
+      return;
+    }
+  
     // Additional client-side validation can be added here
     try {
       const response = await axios.post('http://localhost:5000/api/users', formData);
-
       console.log(response.data); // For debugging
       alert('Signup successful!');
       setFormData({
@@ -46,19 +84,26 @@ const Signup = () => {
       console.error('Error signing up:', error);
     }
   };
-
+  
   return (
     <>
-      <section className='hero'>
-        <div className='container'>
-          
-          <div className='row'>
-            <h1>Welcome to NextSkill Sign IN Page</h1>
-            <p>Far far away, behind the word mountains...</p>
-          
-          </div>
-        </div>
-      </section>
+     <section className='hero'>
+  <div className='container'>
+    <div className='row'>
+      <h1>Welcome to NextSkill Sign IN Page</h1>
+      <p>Far far away, behind the word mountains...</p>
+      <div className="button-container">
+      <button className='primary-btn white-btn'>
+  Get Started &nbsp;<i className='fa fa-long-arrow-alt-right'></i>
+</button>
+
+        <button className='primary-btn'>
+          Resume Course &nbsp;<i className='fa fa-long-arrow-alt-right'></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
       <section>
         <div className="signup-container">
           <div className="row justify-content-center">
