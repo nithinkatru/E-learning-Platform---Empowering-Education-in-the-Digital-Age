@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBell,
+  faInfoCircle,
+  faExclamationTriangle,
+  faCalendarAlt,
+  faBullhorn,
+  faEnvelopeOpenText
+} from '@fortawesome/free-solid-svg-icons';
 import './NoticeBoard.css';
 
 function NoticeBoard({ audience = 'student' }) {
@@ -27,13 +34,33 @@ function NoticeBoard({ audience = 'student' }) {
         fetchNotices();
     }, [audience]);
 
+    const getIcon = (type) => {
+        switch (type) {
+            case 'urgent':
+                return faExclamationTriangle;
+            case 'info':
+                return faInfoCircle;
+            case 'event':
+                return faCalendarAlt;
+            case 'announcement':
+                return faBullhorn;
+            case 'message':
+                return faEnvelopeOpenText;
+            default:
+                return faBell;
+        }
+    };
+
     return (
         <div className="notice-board">
             <h2><FontAwesomeIcon icon={faBell} /> Notices for Students</h2>
             {notices.length > 0 ? (
                 <ul>
                     {notices.map((notice, index) => (
-                        <li key={index}>{notice.message}</li>
+                        <li key={index}>
+                            <FontAwesomeIcon icon={getIcon(notice.type)} />
+                            {' '}{notice.message}
+                        </li>
                     ))}
                 </ul>
             ) : (

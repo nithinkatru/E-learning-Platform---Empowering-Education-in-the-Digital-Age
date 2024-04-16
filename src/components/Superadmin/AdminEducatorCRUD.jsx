@@ -5,7 +5,7 @@ import './AdminEducatorCRUD.css'; // Ensure you have this CSS for styling
 const AdminEducatorCRUD = () => {
     const [users, setUsers] = useState([]);
     const [viewMode, setViewMode] = useState('view');
-    const [filter, setFilter] = useState('all'); // 'all', 'educator', or 'student'
+    const [filter, setFilter] = useState('all');
 
     useEffect(() => {
         fetchUsers();

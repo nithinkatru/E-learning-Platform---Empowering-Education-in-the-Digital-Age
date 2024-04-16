@@ -1,10 +1,13 @@
+
+
 .TakeExam-container {
   max-width: 600px;
   margin: 30px auto;
   padding: 20px;
+  padding-top: 0px;
   border: 1px solid #1eb2a6;
   border-radius: 0; /* Sharp edges */
-  background: #ecf0f1;
+  background: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -96,5 +99,34 @@
 }
 
 .sidebar-btn:hover {
-  background-color: #00796B;
+  background-color:  #009688;
+}
+.TakeExam-container button {
+  display: block; /* Ensure the button extends the full width of its container */
+  width: 90%; /* Slightly less than full width for padding effect */
+  height: 40px; /* Reduced height for a more refined look */
+  padding: 0 10px; /* Padding for spacing the text/icon inside */
+  background-color: #009688; /* A softer blue color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  color: white;
+  cursor: pointer;
+  outline: none;
+  text-align: center; /* Center-align the text */
+  margin: 10px auto; /* Center the button and add spacing around */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
+}
+
+.TakeExam-container button:hover {
+  background-color: #009688;/* A darker shade of the button color on hover */
+}
+
+/* Specific styles for the submit button to distinguish it */
+.TakeExam-container .submit-answers {
+  background-color: #009688; /* A pleasant green for submission buttons */
+}
+
+.TakeExam-container .submit-answers:hover {
+  background-color: #009688;/* A darker shade of green on hover */
 }

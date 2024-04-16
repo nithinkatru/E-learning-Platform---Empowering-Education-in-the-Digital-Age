@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
-import '../StudentDashboard/NoticeBoard.css';
+import './NoticeBoard.css';
+import { faPaperPlane, faPlus } from '@fortawesome/free-solid-svg-icons';
+
 
 function EducatorNoticeBoard() {
     const [notices, setNotices] = useState([]);
@@ -64,12 +66,14 @@ function EducatorNoticeBoard() {
                     placeholder="Write a notice for students..."
                     required
                 />
-                <button type="submit">Post Notice</button>
+                <button type="submit"><FontAwesomeIcon icon={faPaperPlane} /> Post Notice</button>
             </form>
             {notices.length > 0 ? (
                 <ul>
                     {notices.map((notice, index) => (
-                        <li key={index}>{notice.message}</li>
+                        <li key={index}>
+                            <FontAwesomeIcon icon={faPlus} /> {notice.message}
+                        </li>
                     ))}
                 </ul>
             ) : (

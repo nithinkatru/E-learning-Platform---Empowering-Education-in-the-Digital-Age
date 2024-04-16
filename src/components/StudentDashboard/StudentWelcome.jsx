@@ -9,6 +9,7 @@ import StudentViewGrades from './StudentViewGrades';
 import './StudentWelcome.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faBookOpen, faClipboard, faListAlt, faGamepad, faPlusCircle, faVideo, faChartLine, faTasks, faEdit, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import Back from "../common/back/Back";
 
 function StudentDashboard() {
   const [selectedItem, setSelectedItem] = useState('');
@@ -17,6 +18,7 @@ function StudentDashboard() {
     setSelectedItem(section);
   };
 
+  // Render the sidebar unless 'ExploreCourses' is selected
   const renderSidebar = () => {
     return (
       <div className="sidebar">
@@ -44,22 +46,12 @@ function StudentDashboard() {
 
   return (
     <>
-      <section className='hero'>
-        <div className='container'>
-          <div className='row'>
-            <Heading subtitle='WELCOME TO NEXTSKILL' title='Best Online Education Expertise' />
-            <p>Far far away, behind the word mountains...</p>
-          </div>
-          <button className='primary-btn'>SIGN IN <i className='fa fa-long-arrow-alt-right'></i></button>
-          <button className='primary-btn'>SIGN IN <i className='fa fa-long-arrow-alt-right'></i></button>
-        </div>
-      </section>
+      <Back title='Student Dashboard ' />
       <div className="admin-dashboard-container">
-        {renderSidebar()}
+        {selectedItem !== 'ExploreCourses' && renderSidebar()}
         <div className="main-content">
-         
           {selectedItem === 'FeaturedCourses' && <FeaturedCourses />}
-          {selectedItem === 'ExploreCourses' && <ExploreCourses />}
+          {selectedItem === 'ExploreCourses' ? <ExploreCourses /> : null}
           {selectedItem === 'StudentViewGrades' && <StudentViewGrades />}
           {selectedItem === 'TakeExam' && <TakeExam />}
           {selectedItem === 'NoticeBoard' && <NoticeBoard />}
