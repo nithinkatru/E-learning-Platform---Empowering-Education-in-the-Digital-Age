@@ -132,3 +132,36 @@ button:hover {
   }
 }
 
+
+/* Add a darker green color on hover */
+.btn.custom-button-icon:hover {
+  background-color: #45a049 !important;
+}
+
+.button-container {
+  position: absolute; /* Keeps the button container positioned within the hero section */
+  bottom: 50px; /* Increase the distance from the bottom to move the container up */
+  left: 50px; /* Increase the distance from the left to move the container right */
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+}
+
+
+
+.button {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+}
+
+.white-btn {
+  background-color: #fff; /* White background */
+  color: #333; /* Dark text for visibility */
+  border: 1px solid #ccc; /* Optional: adds a subtle border */
+}
+
+.white-btn:hover {
+  background-color: #f8f8f8; /* Light gray background on hover for effect */
+  color: #333;
+}

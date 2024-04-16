@@ -18,6 +18,16 @@ function StudentDashboard() {
     setSelectedItem(section);
   };
 
+  const DefaultContent = () => {
+    return (
+      <div className="default-content">
+        <h1>Welcome to Your Student Dashboard!</h1>
+        <p>Choose an option from the sidebar to begin exploring the portal.</p>
+       
+      </div>
+    );
+  };
+  
   // Render the sidebar unless 'ExploreCourses' is selected
   const renderSidebar = () => {
     return (
@@ -45,21 +55,22 @@ function StudentDashboard() {
   };
 
   return (
-    <>
-      <Back title='Student Dashboard ' />
-      <div className="admin-dashboard-container">
-        {selectedItem !== 'ExploreCourses' && renderSidebar()}
-        <div className="main-content">
-          {selectedItem === 'FeaturedCourses' && <FeaturedCourses />}
-          {selectedItem === 'ExploreCourses' ? <ExploreCourses /> : null}
-          {selectedItem === 'StudentViewGrades' && <StudentViewGrades />}
-          {selectedItem === 'TakeExam' && <TakeExam />}
-          {selectedItem === 'NoticeBoard' && <NoticeBoard />}
-          {selectedItem === 'IQGame' && <IQGame />}
-        </div>
+  <>
+    <Back title='Student Dashboard ' />
+    <div className="admin-dashboard-container">
+      {selectedItem !== 'ExploreCourses' && renderSidebar()}
+      <div className="main-content">
+        {selectedItem === '' && <DefaultContent />}  
+        {selectedItem === 'FeaturedCourses' && <FeaturedCourses />}
+        {selectedItem === 'ExploreCourses' ? <ExploreCourses /> : null}
+        {selectedItem === 'StudentViewGrades' && <StudentViewGrades />}
+        {selectedItem === 'TakeExam' && <TakeExam />}
+        {selectedItem === 'NoticeBoard' && <NoticeBoard />}
+        {selectedItem === 'IQGame' && <IQGame />}
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 }
 
 export default StudentDashboard;
