@@ -125,7 +125,7 @@
     padding: 10px;
     margin: 0;
     font-size: 18px;  /* Adjust font size as necessary */
-    background: rgba(0, 0, 0, 0.7); /* Visible by default */
+    background: rgba(253, 253, 253, 0.7); /* Visible by default */
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

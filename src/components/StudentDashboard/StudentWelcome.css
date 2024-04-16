@@ -1,10 +1,38 @@
 /* StudentDashboard.css */
 
 /* Base styles */
+
+  
+  /* This will target the ExploreCourses component directly after the hero section
+   and remove any top margin or padding that might be causing white space. */
+   .hero + .explore-courses-layout {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  /* If the hero section is not a direct sibling but still the previous element,
+   you can use general sibling combinator (~) */
+  .hero ~ .explore-courses-layout {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  /* Additional CSS resets for any elements within the ExploreCourses component that
+   might be contributing to unwanted space. */
+  .explore-courses-layout,
+  .explore-courses-layout * {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  /* Continue with the rest of your CSS as normal */
+  /* ... */
+  
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
   color: #333;
+  margin:none !important;
 }
 
 .container {
@@ -114,4 +142,41 @@ body {
   padding: 14px; /* Adjusted from 20px to approximately 30% less for top and bottom */
   margin-bottom: 20px;
   padding-top: 20em;
+}
+
+.grades-container {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.grades-container h2 {
+  color: #4CAF50;
+}
+
+.error {
+  color: #D32F2F;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.grades-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.grades-container li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.grades-container li strong {
+  color: #333;
 }

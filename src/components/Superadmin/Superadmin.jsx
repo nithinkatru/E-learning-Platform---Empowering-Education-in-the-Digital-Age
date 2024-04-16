@@ -13,7 +13,7 @@ import './AdminEducatorCRUD.css';
 
 // Import Font Awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faVideo, faChalkboardTeacher, faChartBar, faTasks, faPencilAlt, faBullhorn } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faVideo, faChalkboardTeacher, faChartBar, faTasks,faEdit, faPencilAlt, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 
 function SuperAdminDashboard() {
     console.log('SuperAdminDashboard component rendering');
@@ -23,7 +23,7 @@ function SuperAdminDashboard() {
     const [targetAudience, setTargetAudience] = useState('');
     const [notice, setNotice] = useState('');
     const [educators, setEducators] = useState([]);
-    const [showNoticeForm, setShowNoticeForm] = useState(false); // State variable to toggle display of notice form
+    const [showNoticeForm, setShowNoticeForm] = useState(false); 
 
     useEffect(() => {
         if (showSection === 'viewEducators') {
@@ -97,12 +97,13 @@ function SuperAdminDashboard() {
                 <button className="sidebar-btn" onClick={() => setShowSection('viewAnalytics')}>
                     <FontAwesomeIcon icon={faChartBar} /> View Analytics
                 </button>
-                <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>
+                {/* <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>
                     <FontAwesomeIcon icon={faTasks} /> Manage Assignments
                 </button>
                 <button className="sidebar-btn" onClick={() => setShowSection('QuizManager')}>
-                    <FontAwesomeIcon icon={faPencilAlt} /> Manage Quizzes
-                </button>
+    <FontAwesomeIcon icon={faEdit} /> Manage Quizzes
+</button> */}
+
                 <button className="sidebar-btn" onClick={() => setShowSection('AdminEducatorCRUD')}>
                     <FontAwesomeIcon icon={faPencilAlt} /> AdminEducatorCRUD
                 </button>
@@ -159,8 +160,7 @@ function SuperAdminDashboard() {
                 return <AdminEducatorCRUD />;
             case 'NoticeBoard':
                 return <NoticeBoard />;
-            case 'manage quiz':
-                return <QuizManager />;
+            
             default:
                 console.log('Default section rendering');
                 return null; // Or any default view
