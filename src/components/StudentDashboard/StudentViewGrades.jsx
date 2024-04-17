@@ -13,13 +13,13 @@ function StudentViewGrades() {
     const [submissions, setSubmissions] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
-    const [average, setAverage] = useState(null); // Initialize to null to signify no data
+    const [average, setAverage] = useState(null);
 
     useEffect(() => {
         async function fetchSubmissions() {
             try {
                 const response = await axios.get('http://localhost:5000/api/submissions');
-                const validSubmissions = response.data.filter(sub => sub.percentage !== undefined); // Filter out invalid entries
+                const validSubmissions = response.data.filter(sub => sub.percentage !== undefined);
                 setSubmissions(validSubmissions);
                 if (validSubmissions.length > 0) {
                     const total = validSubmissions.reduce((acc, curr) => acc + curr.percentage, 0);
@@ -62,7 +62,7 @@ function StudentViewGrades() {
                     {submissions.length > 0 ? (
                         <Bar 
                             data={{
-                                labels: submissions.map(sub => sub.quizId.title),
+                                labels: submissions.map(sub => sub.quizId?.title || 'Unknown Quiz'),
                                 datasets: [{
                                     label: 'Grade Percentage',
                                     data: submissions.map(sub => sub.percentage),
@@ -87,7 +87,7 @@ function StudentViewGrades() {
                         <tbody>
                             {submissions.map((submission) => (
                                 <tr key={submission._id}>
-                                    <td>{submission.quizId.title}</td>
+                                    <td>{submission.quizId?.title || 'Unknown Quiz'}</td>
                                     <td>{submission.percentage ? `${submission.percentage.toFixed(2)}%` : 'Not graded yet'}</td>
                                 </tr>
                             ))}

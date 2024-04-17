@@ -47,7 +47,7 @@ function AdminDashboard() {
             <button className="sidebar-btn" onClick={() => setShowSection('QuizManager')}>
                 <FontAwesomeIcon icon={faEdit} /> Manage Quizzes
             </button> 
-            <button className="sidebar-btn" onClick={() => setShowSection('EducatorReleaseGrades')}>
+            <button className="sidebar-btn" onClick={() => setShowSection('QuizManager')}>
                 <FontAwesomeIcon icon={faGraduationCap} /> EducatorReleaseGrades
             </button>
             <button className="sidebar-btn" onClick={() => setShowSection('EducatorNoticeBoard')}>
